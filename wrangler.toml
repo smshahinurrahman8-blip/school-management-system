@@ -1,0 +1,37 @@
+# Cloudflare Workers + D1 configuration
+# Docs: https://developers.cloudflare.com/workers/
+
+name = "school-management-system"
+main = "worker/src/index.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# Static frontend (admin-panel + school-website)
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+# D1 Database binding
+[[d1_databases]]
+binding = "DB"
+database_name = "school-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+preview_database_id = "REPLACE_WITH_PREVIEW_D1_ID"
+
+# Environment secrets (set via: wrangler secret put SECRET_NAME)
+# Required secrets:
+#   ADMIN_JWT_SECRET       — random string for session tokens
+#   GOOGLE_CLIENT_EMAIL    — service account email
+#   GOOGLE_PRIVATE_KEY     — service account private key (PEM)
+#   GOOGLE_DRIVE_FOLDER_ID — root folder ID for school backups
+
+[vars]
+APP_NAME = "School Management System"
+GOOGLE_DRIVE_FOLDER_NAME = "School-Management-Backups"
+# Backup schedule note (Bangladesh UTC+6):
+#   20:00 UTC = 02:00 AM Bangladesh (nightly)
+#   08:00 UTC = 02:00 PM Bangladesh (afternoon)
+
+# Automatic Google Drive backups — twice daily
+[triggers]
+crons = ["0 20 * * *", "0 8 * * *"]

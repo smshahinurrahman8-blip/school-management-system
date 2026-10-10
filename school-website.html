@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আদর্শ সরকারি উচ্চ বিদ্যালয়</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-deep:#0a5c47;
+    --green-mid:#0f8a68;
+    --gold:#e8a817;
+    --gold-light:#f5c842;
+    --cream:#f2f7f4;
+    --paper:#ffffff;
+    --ink:#142820;
+    --ink-soft:#5a6f66;
+    --line:#d4e5dc;
+    --red:#b32020;
+    --radius:14px;
+    --brand-dark:#063d2f;
+    --shadow:0 6px 24px rgba(10,92,71,.09);
+    --shadow-lg:0 18px 48px rgba(10,92,71,.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,'Hind Siliguri','Noto Sans Bengali',Roboto,Arial,sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.7;
+  }
+  h1,h2,h3,h4{
+    font-family:'Segoe UI',system-ui,-apple-system,'Hind Siliguri','Noto Sans Bengali',Roboto,Arial,sans-serif;
+    color:var(--green-deep);
+    line-height:1.35;
+  }
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+  /* ---------- Top info bar ---------- */
+  .topbar{
+    background:var(--green-deep);
+    color:#e9f2ee;
+    font-size:0.85rem;
+  }
+  .topbar .wrap{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:7px 20px;flex-wrap:wrap;gap:6px;
+  }
+  .topbar .left span{margin-right:18px;opacity:.9;}
+  .topbar .right a{margin-left:14px;opacity:.85;}
+  .topbar .right a:hover{opacity:1;text-decoration:underline;}
+
+  /* ---------- Header ---------- */
+  header.main{
+    background:var(--paper);
+    border-bottom:3px solid var(--gold);
+  }
+  .header-inner{
+    display:flex;align-items:center;gap:18px;
+    padding:16px 20px;
+  }
+  .logo-badge{
+    width:64px;height:64px;border-radius:50%;
+    background:conic-gradient(from 210deg, var(--green-mid), var(--gold) 40%, var(--green-deep) 75%, var(--green-mid));
+    flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:'Segoe UI',system-ui,-apple-system,'Hind Siliguri','Noto Sans Bengali',Roboto,Arial,sans-serif;font-weight:700;font-size:1.5rem;
+    box-shadow:0 2px 6px rgba(14,74,58,.25);
+  }
+  .school-name h1{font-size:1.5rem;margin-bottom:2px;}
+  .school-name p{font-size:0.85rem;color:var(--ink-soft);}
+  .header-contact{
+    margin-left:auto;text-align:left;font-size:0.85rem;color:var(--ink-soft);
+    display:flex;gap:22px;
+  }
+  .header-contact div span{display:block;color:var(--green-deep);font-weight:600;}
+
+  /* ---------- Nav ---------- */
+  nav.mainnav{
+    background:var(--green-deep);
+  }
+  nav.mainnav .wrap{display:flex;align-items:center;justify-content:space-between;}
+  .nav-links{display:flex;list-style:none;flex-wrap:wrap;}
+  .nav-links li a{
+    display:block;padding:13px 16px;color:#eef5f1;font-weight:500;font-size:0.95rem;
+    border-right:1px solid rgba(255,255,255,.08);
+    transition:background .15s;
+  }
+  .nav-links li a:hover{background:var(--green-mid);}
+  .nav-links li.login a{background:var(--gold);color:var(--green-deep);font-weight:700;}
+  .nav-links li.login a:hover{background:var(--gold-light);}
+  .hamburger{display:none;background:none;border:0;color:#fff;font-size:1.5rem;padding:10px 20px;cursor:pointer;}
+  .lang-toggle-btn{
+    background:#eef5f1;border:1px solid var(--green-mid);border-radius:20px;flex-shrink:0;
+    padding:6px 14px;font-size:.82rem;font-weight:700;cursor:pointer;color:var(--green-deep);
+  }
+  .lang-toggle-btn:hover{background:var(--gold-light);}
+  @media(max-width:880px){ .lang-toggle-btn{margin-left:auto;} }
+
+  @media(max-width:880px){
+    .header-contact{display:none;}
+    .hamburger{display:block;margin-left:auto;}
+    .nav-links{
+      display:none;flex-direction:column;width:100%;
+      background:var(--green-deep);
+    }
+    .nav-links.open{display:flex;}
+    .nav-links li a{border-right:0;border-bottom:1px solid rgba(255,255,255,.08);}
+    nav.mainnav .wrap{flex-wrap:wrap;}
+  }
+
+  /* ---------- Hero slider ---------- */
+  .hero{
+    position:relative;height:420px;overflow:hidden;
+    background:var(--green-deep);
+  }
+  .hero-slide{
+    position:absolute;inset:0;
+    display:flex;align-items:center;
+    opacity:0;transition:opacity .8s ease;
+    background-size:cover;background-position:center;
+  }
+  .hero-slide.active{opacity:1;}
+  .hero-slide::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg, rgba(14,74,58,.92) 0%, rgba(14,74,58,.55) 55%, rgba(14,74,58,.25) 100%);
+  }
+  .hero-slide .hero-text{
+    position:relative;z-index:2;color:#fff;max-width:640px;padding:0 20px;margin:0 auto;width:100%;
+  }
+  .hero-slide .hero-text p.eyebrow{color:var(--gold-light);font-weight:600;margin-bottom:10px;}
+  .hero-slide .hero-text h2{color:#fff;font-size:2.1rem;margin-bottom:14px;}
+  .hero-slide .hero-text p.desc{color:#dfeae5;margin-bottom:22px;max-width:520px;}
+  .hero-cta{
+    display:inline-block;background:var(--gold);color:var(--green-deep);
+    padding:11px 26px;border-radius:var(--radius);font-weight:700;
+  }
+  .hero-cta:hover{background:var(--gold-light);}
+  .hero-dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:8px;}
+  .hero-dots span{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;}
+  .hero-dots span.active{background:var(--gold);}
+
+  /* ---------- Notice ticker ---------- */
+  .ticker{
+    background:#fff;border-bottom:1px solid var(--line);
+  }
+  .ticker .wrap{display:flex;align-items:center;padding:0;height:48px;}
+  .ticker-label{
+    background:var(--red);color:#fff;font-weight:700;font-size:.85rem;
+    padding:0 18px;height:48px;display:flex;align-items:center;flex-shrink:0;gap:6px;
+  }
+  .ticker-track{overflow:hidden;flex:1;position:relative;height:48px;display:flex;align-items:center;}
+  .ticker-items{display:flex;white-space:nowrap;animation:scroll-left 28s linear infinite;}
+  .ticker-items span{padding:0 40px;font-size:.92rem;color:var(--ink-soft);}
+  @keyframes scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- Sections ---------- */
+  section{padding:56px 0;}
+  .section-head{margin-bottom:32px;max-width:640px;}
+  .section-head p.tag{color:var(--gold);font-weight:600;font-size:.85rem;margin-bottom:6px;}
+  .section-head h2{font-size:1.7rem;}
+  .section-head p.sub{color:var(--ink-soft);margin-top:8px;}
+
+  /* quick info */
+  .stats-strip{background:var(--green-deep);color:#fff;}
+  .stats-strip .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:30px 0;}
+  .stats-strip .stat{text-align:center;}
+  .stats-strip .stat b{display:block;font-size:1.9rem;line-height:1.1;}
+  .stats-strip .stat span{font-size:.86rem;color:#c9e4da;}
+  @media(max-width:760px){.stats-strip .grid{grid-template-columns:repeat(2,1fr);}}
+
+  .quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .quick-card{background:#fff;padding:26px 22px;border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow);}
+  .quick-card .num{font-size:1.9rem;color:var(--green-deep);font-weight:700;}
+  .quick-card .lbl{color:var(--ink-soft);font-size:.9rem;margin-top:4px;}
+  @media(max-width:760px){.quick-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* about + principal */
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start;}
+  .about-grid p{color:var(--ink-soft);margin-bottom:14px;}
+  .principal-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;border-top:3px solid var(--gold);box-shadow:var(--shadow);
+  }
+  .principal-card .avatar{
+    width:78px;height:78px;border-radius:50%;background:var(--green-mid);
+    margin-bottom:14px;
+  }
+  .principal-card h4{font-size:1.05rem;}
+  .principal-card .role{color:var(--gold);font-size:.85rem;font-weight:600;margin-bottom:10px;}
+  .principal-card p{color:var(--ink-soft);font-size:.92rem;}
+  @media(max-width:840px){.about-grid{grid-template-columns:1fr;}}
+
+  /* notice + events */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:36px;}
+  @media(max-width:840px){.split{grid-template-columns:1fr;}}
+  .list-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);}
+  .list-card .head{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 20px;border-bottom:1px solid var(--line);
+  }
+  .list-card .head h3{font-size:1.1rem;}
+  .list-card .head a{color:var(--green-mid);font-size:.85rem;font-weight:600;}
+  .list-row{
+    display:flex;gap:14px;padding:14px 20px;border-bottom:1px solid var(--line);
+  }
+  .list-row:last-child{border-bottom:0;}
+  .date-chip{
+    background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);
+    text-align:center;width:52px;flex-shrink:0;padding:6px 0;
+  }
+  .date-chip .d{font-weight:700;color:var(--green-deep);font-size:1.05rem;}
+  .date-chip .m{font-size:.7rem;color:var(--ink-soft);}
+  .list-row h4{font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:3px;}
+  .list-row p{font-size:.82rem;color:var(--ink-soft);}
+
+  /* teachers */
+  .teacher-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  @media(max-width:900px){.teacher-grid{grid-template-columns:repeat(2,1fr);}}
+  .teacher-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;text-align:center;box-shadow:var(--shadow);transition:.2s;}
+  .teacher-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+  .teacher-photo{height:150px;background:linear-gradient(160deg,var(--green-mid),var(--green-deep));}
+  .teacher-card .info{padding:16px;}
+  .teacher-card h4{font-size:1rem;}
+  .teacher-card .subj{color:var(--gold);font-size:.82rem;font-weight:600;margin:4px 0;}
+  .teacher-card .desig{color:var(--ink-soft);font-size:.82rem;}
+
+  /* gallery */
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:130px;gap:8px;}
+  .gallery-grid .g1{grid-column:span 2;grid-row:span 2;}
+  .gallery-grid div{border-radius:var(--radius);background:linear-gradient(135deg,var(--green-mid),var(--gold));opacity:.85;}
+  @media(max-width:700px){.gallery-grid{grid-template-columns:repeat(2,1fr);}.gallery-grid .g1{grid-column:span 2;grid-row:span 1;}}
+
+  /* result search */
+  .result-box{
+    background:var(--green-deep);border-radius:10px;padding:40px;color:#fff;
+    display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;
+  }
+  .result-box h2{color:#fff;}
+  .result-box p{color:#cfe3db;margin-top:8px;}
+  .result-form{background:#fff;border-radius:var(--radius);padding:22px;}
+  .result-form label{display:block;font-size:.82rem;color:var(--ink-soft);margin-bottom:5px;font-weight:600;}
+  .result-form select,.result-form input{
+    width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:var(--radius);
+    margin-bottom:14px;font-family:inherit;font-size:.92rem;color:var(--ink);
+  }
+  .btn-solid{
+    width:100%;background:var(--gold);color:var(--green-deep);border:0;padding:12px;
+    border-radius:var(--radius);font-weight:700;font-size:.95rem;cursor:pointer;font-family:inherit;
+  }
+  .btn-solid:hover{background:var(--gold-light);}
+  @media(max-width:760px){.result-box{grid-template-columns:1fr;padding:26px;}}
+
+  /* admission form */
+  .adm-field{margin-bottom:16px;}
+  .adm-field label{display:block;font-size:.85rem;color:var(--ink-soft);margin-bottom:6px;font-weight:600;}
+  .adm-field .req{color:#b5372b;}
+  .adm-field input,.adm-field select,.adm-field textarea{
+    width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:var(--radius);
+    font-family:inherit;font-size:.92rem;color:var(--ink);background:#fff;box-sizing:border-box;
+  }
+  .adm-field textarea{resize:vertical;}
+  .adm-field input:focus,.adm-field select:focus,.adm-field textarea:focus{outline:2px solid var(--gold);outline-offset:1px;}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;}
+  @media(max-width:840px){.contact-grid{grid-template-columns:1fr;}}
+  .contact-item{display:flex;gap:14px;margin-bottom:20px;}
+  .contact-item .ic{
+    width:40px;height:40px;border-radius:50%;background:var(--cream);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--green-deep);font-weight:700;
+  }
+  .contact-item h4{font-size:.95rem;margin-bottom:2px;}
+  .contact-item p{color:var(--ink-soft);font-size:.88rem;}
+  .map-box{
+    background:linear-gradient(135deg,#dfe6e1,#cbd8d0);
+    border-radius:var(--radius);height:100%;min-height:260px;
+    display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:.9rem;
+    border:1px solid var(--line);
+  }
+
+  /* footer */
+  footer{background:var(--green-deep);color:#cfe3db;padding-top:46px;}
+  .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.1fr;gap:32px;padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.12);}
+  @media(max-width:800px){.footer-grid{grid-template-columns:1fr 1fr;}}
+  footer h4{color:#fff;font-family:'Segoe UI',system-ui,-apple-system,'Hind Siliguri','Noto Sans Bengali',Roboto,Arial,sans-serif;margin-bottom:14px;font-size:1.05rem;}
+  footer ul{list-style:none;}
+  footer ul li{margin-bottom:9px;font-size:.9rem;}
+  footer ul li a:hover{color:#fff;text-decoration:underline;}
+  .foot-bottom{padding:18px 0;text-align:center;font-size:.82rem;color:#9fc0b3;}
+
+  .btn-outline-sm{
+    display:inline-block;margin-top:10px;border:1px solid var(--green-deep);color:var(--green-deep);
+    padding:7px 16px;border-radius:var(--radius);font-size:.85rem;font-weight:600;
+  }
+  .btn-outline-sm:hover{background:var(--green-deep);color:#fff;}
+
+  /* ---------- Parent Login Modal ---------- */
+  .modal-overlay{
+    display:none;position:fixed;inset:0;background:rgba(10,20,16,.6);z-index:200;
+    align-items:center;justify-content:center;padding:20px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal-box{background:#fff;border-radius:8px;width:100%;max-width:380px;padding:32px 30px;position:relative;}
+  .modal-box .close-x{position:absolute;top:14px;left:16px;background:none;border:0;font-size:1.2rem;color:var(--ink-soft);cursor:pointer;}
+  .modal-badge{width:52px;height:52px;border-radius:50%;margin:0 auto 14px;
+    background:conic-gradient(from 210deg,var(--green-mid),var(--gold) 40%,var(--green-deep) 75%,var(--green-mid));}
+  .modal-box h3{text-align:center;font-size:1.2rem;}
+  .modal-box p.sub{text-align:center;color:var(--ink-soft);font-size:.85rem;margin-bottom:22px;}
+  .modal-box .field{margin-bottom:14px;}
+  .modal-box .field label{display:block;font-size:.82rem;font-weight:600;color:var(--ink-soft);margin-bottom:5px;}
+  .modal-box .field input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:.92rem;font-family:inherit;}
+  .modal-error{color:var(--red);font-size:.82rem;text-align:center;margin-bottom:10px;display:none;}
+  .modal-hint{margin-top:14px;background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:.76rem;color:var(--ink-soft);text-align:center;}
+
+  /* ---------- Parent Portal ---------- */
+  #parentPortal{
+    display:none;position:fixed;inset:0;background:var(--cream);z-index:150;overflow-y:auto;
+  }
+  .portal-top{background:var(--green-deep);color:#fff;padding:16px 24px;display:flex;align-items:center;gap:14px;}
+  .portal-top h2{color:#fff;font-size:1.1rem;}
+  .portal-top .pt-sub{font-size:.8rem;color:#cfe3db;}
+  .portal-top button{margin-left:auto;background:var(--gold);color:var(--green-deep);border:0;padding:8px 16px;border-radius:10px;font-weight:700;font-size:.85rem;cursor:pointer;}
+  .portal-wrap{max-width:900px;margin:0 auto;padding:28px 20px;}
+  .child-card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:22px;display:flex;gap:18px;align-items:center;margin-bottom:22px;border-top:3px solid var(--gold);}
+  .child-card .avatar{width:66px;height:66px;border-radius:50%;background:var(--green-mid);flex-shrink:0;}
+  .child-card h3{font-size:1.15rem;}
+  .child-card p{color:var(--ink-soft);font-size:.88rem;margin-top:3px;}
+  .portal-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:26px;}
+  .portal-stats .pcard{background:#fff;padding:20px;}
+  .portal-stats .pcard .num{font-family:'Segoe UI',system-ui,-apple-system,'Hind Siliguri','Noto Sans Bengali',Roboto,Arial,sans-serif;font-size:1.5rem;color:var(--green-deep);font-weight:700;}
+  .portal-stats .pcard .lbl{font-size:.85rem;color:var(--ink-soft);margin-top:4px;}
+  @media(max-width:700px){.portal-stats{grid-template-columns:repeat(2,1fr);}}
+  .portal-split{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  @media(max-width:760px){.portal-split{grid-template-columns:1fr;}}
+
+  /* =====================================================
+     REDESIGN v2 — "Heritage Emerald" (ইউনিক ডিজাইন)
+     ===================================================== */
+  :root{
+    --green-deep:#0b3d33; --green-mid:#12725b; --brand-dark:#072a23;
+    --gold:#c99a2e; --gold-light:#ecc96b;
+    --cream:#f6f1e6; --paper:#fffdf8; --ink:#15241f; --ink-soft:#5d6d66; --line:#e6dcc4;
+    --radius:16px;
+    --shadow:0 8px 28px rgba(11,61,51,.08); --shadow-lg:0 24px 54px rgba(11,61,51,.2);
+  }
+  body{
+    background-color:var(--cream);
+    background-image:radial-gradient(circle at 1px 1px, rgba(11,61,51,.05) 1px, transparent 0);
+    background-size:24px 24px;
+  }
+  h1,h2,h3{font-family:'Noto Serif Bengali','Hind Siliguri','Segoe UI',serif;letter-spacing:-.2px;}
+
+  /* top bar + header */
+  .topbar{background:linear-gradient(90deg,var(--brand-dark),var(--green-deep));border-bottom:1px solid rgba(236,201,107,.35);}
+  header.main{background:var(--paper);border-bottom:0;position:relative;}
+  header.main::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;
+    background:repeating-linear-gradient(90deg,var(--gold) 0 18px,var(--green-deep) 18px 36px);}
+  .header-inner{padding:18px 20px 22px;}
+  .logo-badge{width:70px;height:70px;font-family:'Noto Serif Bengali',serif;font-size:1.9rem;
+    border:3px solid var(--paper);outline:2px solid var(--gold);box-shadow:0 6px 18px rgba(11,61,51,.28);}
+  .school-name h1{font-size:1.65rem;color:var(--green-deep);}
+  .school-name p{color:var(--gold);font-weight:600;letter-spacing:.3px;}
+  .lang-toggle-btn{background:var(--paper);border:1.5px solid var(--gold);}
+
+  /* sticky nav */
+  nav.mainnav{position:sticky;top:0;z-index:100;background:linear-gradient(180deg,var(--green-deep),var(--brand-dark));
+    box-shadow:0 6px 20px rgba(7,42,35,.28);}
+  .nav-links li a{position:relative;border-right:0;padding:14px 14px;font-size:.93rem;}
+  .nav-links li a::after{content:"";position:absolute;left:14px;right:14px;bottom:8px;height:2px;background:var(--gold-light);
+    transform:scaleX(0);transform-origin:center;transition:transform .25s;}
+  .nav-links li a:hover{background:transparent;color:var(--gold-light);}
+  .nav-links li a:hover::after{transform:scaleX(1);}
+  .nav-links li.login a{background:linear-gradient(135deg,var(--gold-light),var(--gold));border-radius:99px;margin:7px 0 7px 6px;padding:7px 20px;}
+  .nav-links li.login a::after{display:none;}
+  .hamburger{color:var(--gold-light);}
+
+  /* hero */
+  .hero{height:540px;}
+  .hero::before{content:"";position:absolute;z-index:2;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;
+    border:60px solid rgba(236,201,107,.10);pointer-events:none;}
+  .hero-slide{background-image:
+     radial-gradient(circle at 78% 30%, rgba(236,201,107,.22), transparent 42%),
+     linear-gradient(135deg,#0b3d33 0%,#12725b 55%,#0b3d33 100%);}
+  .hero-slide::after{background:linear-gradient(90deg,rgba(7,42,35,.55) 0%,rgba(7,42,35,.15) 70%,transparent 100%);}
+  .hero-slide .hero-text{max-width:1180px;padding:0 20px 40px;}
+  .hero-slide .hero-text p.eyebrow{display:inline-block;background:rgba(236,201,107,.16);border:1px solid rgba(236,201,107,.5);
+    padding:5px 18px;border-radius:99px;font-size:.85rem;letter-spacing:1px;}
+  .hero-slide .hero-text h2{font-size:2.7rem;max-width:720px;line-height:1.3;text-shadow:0 4px 24px rgba(0,0,0,.25);}
+  .hero-slide .hero-text p.desc{font-size:1.05rem;max-width:600px;}
+  .hero-cta{background:linear-gradient(135deg,var(--gold-light),var(--gold));border-radius:99px;padding:13px 32px;
+    box-shadow:0 10px 26px rgba(201,154,46,.4);transition:.2s;}
+  .hero-cta::after{content:"  →";}
+  .hero-cta:hover{transform:translateY(-2px);}
+  /* দ্রুত অ্যাক্সেস কার্ড ও নোটিশ বার এখন স্ট্যাটস বারের নিচে (হিরোর উপর ওভারল্যাপ নেই) */
+  .stats-strip{margin-top:0 !important;}
+  .ticker{margin-top:34px !important;margin-bottom:0;}
+  .quick-access{margin-top:30px !important;margin-bottom:34px;}
+  .hero-dots{bottom:30px;}
+  .hero-schoolbar{position:absolute;z-index:4;top:22px;left:0;right:0;pointer-events:none;}
+  .hero-schoolbar .in{max-width:1180px;margin:0 auto;padding:0 20px;}
+  .hero-schoolbar .nm{display:inline-block;background:rgba(7,42,35,.62);color:#fff;font-weight:800;font-size:1.15rem;padding:8px 18px;border-radius:12px;border-left:4px solid var(--gold-light);backdrop-filter:blur(2px);}
+  .hero-schoolbar .pr{display:inline-block;margin-top:6px;background:rgba(7,42,35,.62);color:var(--gold-light);font-weight:600;font-size:.9rem;padding:4px 12px;border-radius:8px;}
+  .hero-schoolbar .pr:empty{display:none;}
+  .hero-schoolbar .in{display:flex;flex-direction:column;align-items:flex-start;}
+  @media(max-width:700px){.hero-schoolbar .nm{font-size:.95rem;}}
+  .hero-dots span{width:28px;height:5px;border-radius:5px;}
+  @media(max-width:700px){.hero{height:500px;}.hero-slide .hero-text h2{font-size:1.85rem;}}
+
+  /* quick access tiles (overlap hero) */
+  .quick-access{position:relative;z-index:6;margin-top:-52px;}
+  .qa-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+  .qa{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:18px 10px 16px;text-align:center;
+    box-shadow:var(--shadow-lg);border-bottom:4px solid var(--gold);transition:.22s;display:block;}
+  .qa:hover{transform:translateY(-6px);border-bottom-color:var(--green-mid);}
+  .qa .qi{display:flex;width:52px;height:52px;margin:0 auto 8px;border-radius:50%;align-items:center;justify-content:center;font-size:1.5rem;
+    background:linear-gradient(135deg,#efe6cf,#fbf6e8);border:1px solid var(--line);}
+  .qa b{display:block;font-size:.98rem;color:var(--green-deep);}
+  .qa small{color:var(--ink-soft);font-size:.78rem;}
+  /* quick-access dropdown cards */
+  .qa-item{position:relative;}
+  button.qa{width:100%;font:inherit;color:inherit;cursor:pointer;position:relative;}
+  .qa .qa-caret{position:absolute;right:9px;top:9px;font-size:.8rem;color:var(--green-mid);transition:transform .2s;}
+  .qa-item.open .qa-caret{transform:rotate(180deg);}
+  .qa-item.open .qa{border-bottom-color:var(--green-mid);transform:translateY(-6px);}
+  .qa-menu{display:none;position:absolute;left:0;top:calc(100% + 8px);min-width:100%;width:max-content;max-width:260px;background:var(--paper);
+    border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:12px;box-shadow:var(--shadow-lg);padding:6px;z-index:30;text-align:left;}
+  .qa-item.open .qa-menu{display:block;animation:qaPop .16s ease-out;}
+  .qa-item.end .qa-menu{left:auto;right:0;}
+  .qa-menu a{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:8px;color:var(--ink);font-size:.9rem;text-decoration:none;line-height:1.35;}
+  .qa-menu a::before{content:"▸";color:var(--green-mid);font-size:.8rem;}
+  .qa-menu a:hover,.qa-menu a:focus{background:var(--cream);color:var(--green-deep);outline:none;}
+  @keyframes qaPop{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
+  @media(max-width:900px){.qa-item:nth-child(3n) .qa-menu{left:auto;right:0;}}
+  @media(max-width:520px){.qa-item .qa-menu,.qa-item.end .qa-menu{position:fixed;left:12px !important;right:12px !important;bottom:14px;top:auto;width:auto;min-width:0;max-width:none;z-index:60;box-shadow:0 -6px 30px rgba(0,0,0,.28);border-radius:16px;padding:8px;}.qa-menu a{padding:13px 14px;font-size:1rem;}}
+  @media(max-width:900px){.qa-grid{grid-template-columns:repeat(3,1fr);}}
+  @media(max-width:520px){.qa-grid{grid-template-columns:repeat(2,1fr);gap:10px;}.qa{padding:14px 8px;}}
+
+  /* ticker */
+  .ticker{background:transparent;border-bottom:0;margin-top:26px;}
+  .ticker .wrap{background:var(--paper);border:1px solid var(--line);border-radius:99px;overflow:hidden;box-shadow:var(--shadow);max-width:1140px;}
+  .ticker-label{background:linear-gradient(135deg,#a51d1d,#c93030);}
+
+  /* section heads */
+  section{padding:70px 0;}
+  .section-head{margin-left:auto;margin-right:auto;text-align:center;max-width:720px;}
+  .section-head p.tag{display:inline-block;background:#f1e7cd;color:#8a6410;padding:4px 18px;border-radius:99px;
+    letter-spacing:1.6px;font-size:.76rem;text-transform:uppercase;border:1px solid #e2d3a8;}
+  .section-head h2{font-size:1.95rem;margin-top:8px;}
+  .section-head h2::after{content:"";display:block;width:64px;height:4px;border-radius:4px;margin:12px auto 0;
+    background:linear-gradient(90deg,var(--gold),var(--gold-light));}
+  .about-grid .section-head{text-align:left;margin-left:0;}
+  .about-grid .section-head h2::after{margin-left:0;}
+
+  /* stats */
+  .stats-strip{background:linear-gradient(120deg,var(--brand-dark),var(--green-deep) 60%,#146b56);padding:8px 0;margin-top:34px;
+    border-top:3px solid var(--gold);border-bottom:3px solid var(--gold);}
+  .stats-strip .stat{border-right:1px solid rgba(236,201,107,.25);}
+  .stats-strip .stat:last-child{border-right:0;}
+  .stats-strip .stat b{font-family:'Noto Serif Bengali',serif;font-size:2.3rem;color:var(--gold-light);}
+
+  /* cards */
+  .quick-card{border-top:4px solid var(--gold);text-align:center;transition:.22s;}
+  .quick-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);}
+  .quick-card .num{font-family:'Noto Serif Bengali',serif;font-size:2.3rem;color:var(--gold);}
+  .principal-card{border-top:0;border-left:5px solid var(--gold);position:relative;background:linear-gradient(160deg,var(--paper),#f8f1de);}
+  .principal-card::before{content:"“";position:absolute;right:18px;top:-6px;font-size:6rem;color:rgba(201,154,46,.22);font-family:'Noto Serif Bengali',serif;line-height:1;}
+  .principal-card .avatar{background:linear-gradient(135deg,var(--green-mid),var(--green-deep));border:3px solid var(--gold-light);}
+  .list-card{overflow:hidden;}
+  .list-card .head{background:linear-gradient(90deg,var(--green-deep),#146b56);}
+  .list-card .head h3,.list-card .head a{color:#fff;}
+  .list-card .head a{color:var(--gold-light);}
+  .date-chip{background:var(--green-deep);border:0;color:#fff;}
+  .date-chip .d{color:var(--gold-light);}
+  .date-chip .m{color:#cfe3db;}
+  .list-row{transition:background .15s;}
+  .list-row:hover{background:#faf5e6;}
+
+  /* teacher + committee cards */
+  .teacher-photo{height:176px;position:relative;
+    background:linear-gradient(160deg,var(--green-mid),var(--brand-dark));}
+  .teacher-photo:not([style*="background-image"])::after{content:"👤";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-size:3.4rem;opacity:.55;filter:grayscale(1) brightness(2);}
+  .teacher-card{border-bottom:4px solid var(--gold);}
+  .teacher-card .info{padding:16px 14px 18px;}
+  .teacher-card .subj{color:#9a7414;}
+  #committee h3{display:flex;align-items:center;gap:12px;font-size:1.25rem;margin-bottom:18px !important;}
+  #committee h3::before{content:"";width:6px;height:28px;background:var(--gold);border-radius:4px;}
+  #committee h3::after{content:"";flex:1;height:1px;background:var(--line);}
+  #guestCommitteeGrid .teacher-card{border-bottom-color:#b9b3a1;}
+  #guestCommitteeGrid .teacher-photo{background:linear-gradient(160deg,#6d7f78,#3c4a45);}
+
+  /* gallery */
+  .gallery-grid div{border-radius:var(--radius);opacity:1;box-shadow:var(--shadow);transition:.25s;}
+  .gallery-grid div:hover{transform:scale(1.03);}
+  .gallery-grid div:nth-child(1){background:linear-gradient(135deg,#12725b,#0b3d33);}
+  .gallery-grid div:nth-child(2){background:linear-gradient(135deg,#c99a2e,#ecc96b);}
+  .gallery-grid div:nth-child(3){background:linear-gradient(135deg,#0b3d33,#c99a2e);}
+  .gallery-grid div:nth-child(4){background:linear-gradient(135deg,#ecc96b,#12725b);}
+  .gallery-grid div:nth-child(5){background:linear-gradient(135deg,#12725b,#ecc96b);}
+  .gallery-grid div:nth-child(6){background:linear-gradient(135deg,#072a23,#12725b);}
+
+  /* result */
+  .result-box{border-radius:24px;position:relative;overflow:hidden;
+    background:linear-gradient(130deg,var(--brand-dark),var(--green-deep) 55%,#146b56);}
+  .result-box::before{content:"";position:absolute;left:-90px;bottom:-110px;width:320px;height:320px;border-radius:50%;
+    border:44px solid rgba(236,201,107,.12);}
+  .result-box > *{position:relative;}
+  .btn-solid{background:linear-gradient(135deg,var(--gold-light),var(--gold));border-radius:99px;box-shadow:0 8px 20px rgba(201,154,46,.35);}
+
+  /* admission form */
+  #admissionApplyForm{display:grid !important;grid-template-columns:1fr 1fr;gap:0 20px;max-width:880px !important;
+    border-radius:22px !important;border:1px solid var(--line) !important;border-top:6px solid var(--gold) !important;
+    padding:34px 32px !important;box-shadow:var(--shadow-lg);background:var(--paper) !important;}
+  #admissionApplyForm .adm-field:nth-last-child(-n+3),#admissionApplyForm .btn-solid{grid-column:1/-1;}
+  .adm-field input,.adm-field select,.adm-field textarea{background:#fffcf3;border-radius:12px;padding:12px 14px;}
+  .adm-field label{color:var(--green-deep);}
+  @media(max-width:700px){#admissionApplyForm{grid-template-columns:1fr;padding:24px 18px !important;}}
+
+  /* contact + footer */
+  .contact-item .ic{background:linear-gradient(135deg,#f1e7cd,#fbf6e8);border-color:#e2d3a8;}
+  .map-box{border-radius:var(--radius);background:linear-gradient(135deg,#e8e0c8,#d3dccf);}
+  footer{background:linear-gradient(180deg,var(--green-deep),var(--brand-dark));border-top:5px solid var(--gold);position:relative;}
+  footer h4{color:var(--gold-light);font-family:'Noto Serif Bengali',serif;}
+  footer ul li a:hover{color:var(--gold-light);}
+  .foot-bottom{background:rgba(0,0,0,.18);}
+
+  /* scroll reveal */
+  .reveal-on .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal-on .rv.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.reveal-on .rv{opacity:1;transform:none;transition:none;}}
+
+  /* ---- v3: committee showcase (বর্তমান বনাম পূর্বের কমিটি) ---- */
+  #committee .teacher-grid{grid-template-columns:repeat(auto-fit,minmax(210px,1fr));}
+  #currentCommitteeGrid .teacher-card{border:1px solid var(--line);border-bottom:0;position:relative;}
+  #currentCommitteeGrid .teacher-card::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;
+    background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold));z-index:2;}
+  #currentCommitteeGrid .teacher-card .desig{display:inline-block;margin-top:8px;padding:4px 14px;border-radius:99px;
+    background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--brand-dark);font-weight:700;font-size:.8rem;}
+  #currentCommitteeGrid .teacher-photo{height:190px;}
+  #guestCommitteeGrid .teacher-card{background:#f7f4ec;box-shadow:none;border:1px dashed #cfc7b0;border-bottom:1px dashed #cfc7b0;}
+  #guestCommitteeGrid .teacher-photo{height:120px;filter:saturate(.6);}
+  #guestCommitteeGrid .teacher-card .desig{color:#7a725c;font-style:italic;}
+  #guestCommitteeGrid .teacher-card::after{content:"পূর্বের";display:block;text-align:center;font-size:.68rem;letter-spacing:1px;
+    color:#8b8369;padding-bottom:10px;}
+
+  /* ---- v4: অ্যাডমিন থেকে আপলোড করা হিরো ব্যানার ছবি ---- */
+  .hero-slide.banner-img{align-items:flex-end;background-size:cover;background-position:center;}
+  .hero-slide.banner-img::after{background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(7,42,35,.6) 100%);}
+  .hero-slide.banner-img .hero-text{padding-bottom:46px;}
+
+  /* ---- ফুটার: ডেভেলপার ক্রেডিট ডানদিকে ---- */
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px 20px;flex-wrap:wrap;text-align:left;}
+  .foot-bottom .dev-credit{margin-left:auto;color:var(--gold-light);font-weight:600;letter-spacing:.3px;font-size:.88rem;white-space:nowrap;}
+  .foot-bottom{flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:6px;padding:18px 16px;box-sizing:border-box;width:100%;max-width:100%;overflow-wrap:anywhere;}
+  .foot-bottom span{max-width:100%;}
+  .foot-bottom .dev-credit{margin-left:0;white-space:normal;}
+  @media(max-width:640px){.foot-bottom{justify-content:center;text-align:center;}.foot-bottom .dev-credit{margin-left:0;}}
+</style>
+<script src="site-data.js" onerror="void 0"></script>
+<script>
+/* admin প্যানেল থেকে প্রকাশ করা site-data.js থাকলে (আলাদা origin-এও) তার ডেটা প্রয়োগ করে */
+(function(){
+  try{
+    var d = window.SMS_SITE_DATA; if(!d || !d.data) return;
+    var last = +(localStorage.getItem('sms_site_data_applied') || 0);
+    if(d.publishedAt <= last) return;
+    Object.keys(d.data).forEach(function(k){ localStorage.setItem(k, d.data[k]); });
+    localStorage.setItem('sms_site_data_applied', String(d.publishedAt));
+  }catch(e){}
+})();
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="left">
+      <span>📞 ০২১-১২৩৪৫৬</span>
+      <span>✉️ info@school.edu.bd</span>
+    </div>
+    <div class="right">
+      <a href="#">Facebook</a>
+      <a href="#">YouTube</a>
+      <a href="#" id="topbarParentLogin">অভিভাবক লগইন</a>
+      <a href="#login">অ্যাডমিন লগইন</a>
+    </div>
+  </div>
+</div>
+
+<header class="main">
+  <div class="wrap header-inner">
+    <div class="logo-badge">আ</div>
+    <div class="school-name">
+      <h1>আদর্শ সরকারি উচ্চ বিদ্যালয়</h1>
+      <p>প্রতিষ্ঠাকাল ১৯৫৪ · EIIN: ১২০৭১৯ · বাংলাদেশ</p>
+    </div>
+    <div class="header-contact">
+      <div><span>ঠিকানা</span>পৌরসভা রোড, জেলা সদর</div>
+      <div><span>ইমেইল</span>info@school.edu.bd</div>
+    </div>
+    <button id="langToggleBtn" class="lang-toggle-btn" title="Bangla / English">🌐 <span id="langToggleLabel">EN</span></button>
+  </div>
+</header>
+
+<nav class="mainnav">
+  <div class="wrap">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">হোম</a></li>
+      <li><a href="#about">স্কুল সম্পর্কে</a></li>
+      <li><a href="#principal">প্রধান শিক্ষকের বার্তা</a></li>
+      <li><a href="#academic">একাডেমিক</a></li>
+      <li><a href="#teachers">শিক্ষকবৃন্দ</a></li>
+      <li><a href="#committee">কমিটি</a></li>
+      <li><a href="#admission">ভর্তি আবেদন</a></li>
+      <li><a href="#notice">নোটিশ</a></li>
+      <li><a href="#result">রেজাল্ট</a></li>
+      <li><a href="#gallery">গ্যালারি</a></li>
+      <li><a href="#contact">যোগাযোগ</a></li>
+      <li><a href="#" id="navParentLogin" style="background:rgba(255,255,255,.08);">অভিভাবক লগইন</a></li>
+      <li class="login"><a href="#login">লগইন</a></li>
+    </ul>
+    <button class="hamburger" id="hamBtn">☰</button>
+  </div>
+</nav>
+
+<div class="hero" id="home">
+  <div class="hero-slide active">
+    <div class="wrap"><div class="hero-text">
+      <p class="eyebrow">জ্ঞানই শক্তি</p>
+      <h2>শিক্ষার মাধ্যমে গড়ে তুলছি আগামীর নাগরিক</h2>
+      <p class="desc">১৯৫৪ সাল থেকে মানসম্মত শিক্ষা প্রদানে প্রতিশ্রুতিবদ্ধ একটি ঐতিহ্যবাহী প্রতিষ্ঠান — যেখানে শৃঙ্খলা, নৈতিকতা ও একাডেমিক উৎকর্ষতাকে সমান গুরুত্ব দেওয়া হয়।</p>
+      <a href="#about" class="hero-cta">আরও জানুন</a>
+    </div></div>
+  </div>
+  <div class="hero-slide">
+    <div class="wrap"><div class="hero-text">
+      <p class="eyebrow">ভর্তি বিজ্ঞপ্তি</p>
+      <h2>২০২৭ শিক্ষাবর্ষে ভর্তি কার্যক্রম শীঘ্রই শুরু হচ্ছে</h2>
+      <p class="desc">ষষ্ঠ থেকে নবম শ্রেণিতে ভর্তির জন্য প্রয়োজনীয় তথ্য ও ফরম নোটিশ বোর্ড থেকে সংগ্রহ করুন।</p>
+      <a href="#notice" class="hero-cta">নোটিশ দেখুন</a>
+    </div></div>
+  </div>
+  <div class="hero-slide">
+    <div class="wrap"><div class="hero-text">
+      <p class="eyebrow">সাম্প্রতিক ফলাফল</p>
+      <h2>এসএসসি পরীক্ষায় পাসের হার ৯৭.২%</h2>
+      <p class="desc">শিক্ষার্থী ও অভিভাবকদের ঐকান্তিক প্রচেষ্টা এবং শিক্ষকমণ্ডলীর নিরলস পরিশ্রমের ফসল এই কৃতিত্ব।</p>
+      <a href="#result" class="hero-cta">রেজাল্ট খুঁজুন</a>
+    </div></div>
+  </div>
+  <div class="hero-schoolbar" id="heroSchool" style="display:none"><div class="in"><span class="nm"></span><span class="pr"></span></div></div>
+  <div class="hero-dots" id="heroDots"></div>
+</div>
+
+<section class="stats-strip">
+  <div class="wrap grid">
+    <div class="stat"><b>২০০০+</b><span>মোট শিক্ষার্থী</span></div>
+    <div class="stat"><b>৫২</b><span>শিক্ষকমণ্ডলী</span></div>
+    <div class="stat"><b>১৯৫৪</b><span>প্রতিষ্ঠাকাল</span></div>
+    <div class="stat"><b>৯৭%</b><span>গড় পাসের হার</span></div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="wrap">
+    <div class="ticker-label">📢 নোটিশ</div>
+    <div class="ticker-track">
+      <div class="ticker-items">
+        <span>বার্ষিক ক্রীড়া প্রতিযোগিতা আগামী ১৫ অক্টোবর অনুষ্ঠিত হবে।</span>
+        <span>নবম শ্রেণির অর্ধবার্ষিক পরীক্ষার রুটিন প্রকাশিত হয়েছে।</span>
+        <span>বিদ্যালয় পরিচালনা কমিটির সভা আগামী শুক্রবার।</span>
+        <span>বার্ষিক ক্রীড়া প্রতিযোগিতা আগামী ১৫ অক্টোবর অনুষ্ঠিত হবে।</span>
+        <span>নবম শ্রেণির অর্ধবার্ষিক পরীক্ষার রুটিন প্রকাশিত হয়েছে।</span>
+        <span>বিদ্যালয় পরিচালনা কমিটির সভা আগামী শুক্রবার।</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="quick-access">
+  <div class="wrap qa-grid">
+    <div class="qa-item"><button type="button" class="qa" aria-haspopup="true" aria-expanded="false"><span class="qa-caret" aria-hidden="true">▾</span><span class="qi">📝</span><b>ভর্তি আবেদন</b><small>অনলাইনে আবেদন করুন</small></button><div class="qa-menu" role="menu"><a href="#notice" role="menuitem">ভর্তি বিজ্ঞপ্তি</a><a href="#admission" role="menuitem">অনলাইন ভর্তি ফরম</a><a href="#" role="menuitem" data-act="offline-form">অফলাইন ভর্তি ফরম</a></div></div>
+    <div class="qa-item"><button type="button" class="qa" aria-haspopup="true" aria-expanded="false"><span class="qa-caret" aria-hidden="true">▾</span><span class="qi">🎓</span><b>রেজাল্ট</b><small>ফলাফল দেখুন</small></button><div class="qa-menu" role="menu"><a href="#result" role="menuitem">অনলাইনে রেজাল্ট দেখুন</a><a href="#notice" role="menuitem">পরীক্ষার রুটিন ও নোটিশ</a></div></div>
+    <div class="qa-item"><button type="button" class="qa" aria-haspopup="true" aria-expanded="false"><span class="qa-caret" aria-hidden="true">▾</span><span class="qi">📢</span><b>নোটিশ বোর্ড</b><small>সর্বশেষ বিজ্ঞপ্তি</small></button><div class="qa-menu" role="menu"><a href="#notice" role="menuitem">সকল নোটিশ</a><a href="#notice" role="menuitem">শিক্ষার্থীর নোটিশ</a><a href="#notice" role="menuitem">শিক্ষক-কর্মচারীর নোটিশ</a><a href="#notice" role="menuitem">আসন্ন ইভেন্ট</a></div></div>
+    <div class="qa-item"><button type="button" class="qa" aria-haspopup="true" aria-expanded="false"><span class="qa-caret" aria-hidden="true">▾</span><span class="qi">🏛️</span><b>কমিটি</b><small>বর্তমান ও পূর্বের কমিটি</small></button><div class="qa-menu" role="menu"><a href="#committeeCurrent" role="menuitem">বর্তমান কমিটি</a><a href="#committeePrevious" role="menuitem">পূর্বের কমিটি</a></div></div>
+    <div class="qa-item end"><button type="button" class="qa" aria-haspopup="true" aria-expanded="false"><span class="qa-caret" aria-hidden="true">▾</span><span class="qi">👩‍🏫</span><b>শিক্ষকবৃন্দ</b><small>আমাদের শিক্ষক</small></button><div class="qa-menu" role="menu"><a href="#teachers" role="menuitem">সকল শিক্ষক</a><a href="#about" role="menuitem">প্রধান শিক্ষকের বাণী</a></div></div>
+    <div class="qa-item end"><button type="button" class="qa" aria-haspopup="true" aria-expanded="false"><span class="qa-caret" aria-hidden="true">▾</span><span class="qi">🖼️</span><b>গ্যালারি</b><small>ছবি ও কার্যক্রম</small></button><div class="qa-menu" role="menu"><a href="#gallery" role="menuitem">ফটো গ্যালারি</a><a href="#notice" role="menuitem">স্কুলের কার্যক্রম ও ইভেন্ট</a></div></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="section-head">
+        <p class="tag">পরিচিতি</p>
+        <h2>আমাদের স্কুল সম্পর্কে</h2>
+      </div>
+      <p>১৯৫৪ সালে প্রতিষ্ঠিত হওয়ার পর থেকে আদর্শ সরকারি উচ্চ বিদ্যালয় এই অঞ্চলের অন্যতম প্রাচীন ও ঐতিহ্যবাহী শিক্ষা প্রতিষ্ঠান হিসেবে পরিচিত। বিদ্যালয়টি ষষ্ঠ থেকে দশম শ্রেণি পর্যন্ত মানসম্মত শিক্ষা প্রদান করে আসছে।</p>
+      <p>আমাদের লক্ষ্য শুধু পাঠ্যপুস্তক কেন্দ্রিক শিক্ষা নয়, বরং শিক্ষার্থীদের মধ্যে নৈতিকতা, শৃঙ্খলা ও সৃজনশীলতা গড়ে তোলা। খেলাধুলা, বিতর্ক, সাংস্কৃতিক কার্যক্রম ও বিজ্ঞান চর্চায় আমরা সমান গুরুত্ব দিয়ে থাকি।</p>
+      <a href="#" class="btn-outline-sm">বিস্তারিত পড়ুন</a>
+    </div>
+    <div class="principal-card" id="principal">
+      <div class="avatar"></div>
+      <h4>জনাব আব্দুল করিম</h4>
+      <p class="role">প্রধান শিক্ষক</p>
+      <p>"আমরা বিশ্বাস করি প্রতিটি শিক্ষার্থীর মধ্যেই সম্ভাবনা লুকিয়ে আছে। আমাদের দায়িত্ব সেই সম্ভাবনাকে সঠিক পথে পরিচালিত করা। অভিভাবক ও শিক্ষকমণ্ডলীর সম্মিলিত প্রচেষ্টাতেই আমরা একটি সুন্দর ভবিষ্যৎ গড়ে তুলতে পারব।"</p>
+    </div>
+  </div>
+</section>
+
+<section id="academic" style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="tag">একাডেমিক তথ্য</p>
+      <h2>শ্রেণি ও শাখাসমূহ</h2>
+      <p class="sub">ষষ্ঠ থেকে দশম শ্রেণি পর্যন্ত বিজ্ঞান, ব্যবসায় শিক্ষা ও মানবিক বিভাগে শিক্ষা কার্যক্রম পরিচালিত হয়।</p>
+    </div>
+    <div class="quick-grid">
+      <div class="quick-card"><div class="num">৬</div><div class="lbl">ষষ্ঠ শ্রেণি — ৪টি শাখা</div></div>
+      <div class="quick-card"><div class="num">৭</div><div class="lbl">সপ্তম শ্রেণি — ৪টি শাখা</div></div>
+      <div class="quick-card"><div class="num">৮</div><div class="lbl">অষ্টম শ্রেণি — ৩টি শাখা</div></div>
+      <div class="quick-card"><div class="num">৯-১০</div><div class="lbl">বিজ্ঞান / ব্যবসায় / মানবিক</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="notice">
+  <div class="wrap split">
+    <div class="list-card">
+      <div class="head"><h3>📋 সর্বশেষ নোটিশ</h3><a href="#">সব দেখুন →</a></div>
+      <div class="list-row"><div class="date-chip"><div class="d">১২</div><div class="m">সেপ্টেম্বর</div></div><div><h4>অর্ধবার্ষিক পরীক্ষার রুটিন প্রকাশ</h4><p>নবম ও দশম শ্রেণির জন্য প্রযোজ্য।</p></div></div>
+      <div class="list-row"><div class="date-chip"><div class="d">০৮</div><div class="m">সেপ্টেম্বর</div></div><div><h4>বার্ষিক ক্রীড়া প্রতিযোগিতা</h4><p>নিবন্ধনের শেষ তারিখ ২০ সেপ্টেম্বর।</p></div></div>
+      <div class="list-row"><div class="date-chip"><div class="d">০২</div><div class="m">সেপ্টেম্বর</div></div><div><h4>অভিভাবক সমাবেশ অনুষ্ঠিত হবে</h4><p>সকল শ্রেণির অভিভাবকদের উপস্থিত থাকার অনুরোধ।</p></div></div>
+    </div>
+    <div class="list-card">
+      <div class="head"><h3>📅 আসন্ন ইভেন্ট</h3><a href="#">সব দেখুন →</a></div>
+      <div class="list-row"><div class="date-chip"><div class="d">১৫</div><div class="m">অক্টোবর</div></div><div><h4>বার্ষিক ক্রীড়া প্রতিযোগিতা</h4><p>বিদ্যালয় মাঠে সকাল ৯টা থেকে।</p></div></div>
+      <div class="list-row"><div class="date-chip"><div class="d">২২</div><div class="m">অক্টোবর</div></div><div><h4>বিজ্ঞান মেলা ২০২৬</h4><p>শ্রেণিভিত্তিক প্রজেক্ট প্রদর্শনী।</p></div></div>
+      <div class="list-row"><div class="date-chip"><div class="d">০৫</div><div class="m">নভেম্বর</div></div><div><h4>সাংস্কৃতিক অনুষ্ঠান</h4><p>নবীনবরণ ও পুরস্কার বিতরণী।</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="admission" style="display:none;">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="tag">ADMISSION</p>
+      <h2>ভর্তির আবেদন ফরম</h2>
+      <p class="sub">নিচের ফরমটি সঠিকভাবে পূরণ করে জমা দিন। আবেদন যাচাই করে আমাদের অফিস থেকে আপনার সাথে যোগাযোগ করা হবে।</p>
+    </div>
+    <div style="text-align:center;margin:-14px 0 18px;"><button type="button" id="admCloseBtn" style="background:none;border:1px solid var(--line);border-radius:99px;padding:6px 18px;cursor:pointer;color:var(--ink-soft);font-family:inherit;">✕ ফরম বন্ধ করুন</button></div>
+    <form id="admissionApplyForm" style="max-width:640px;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:28px 24px;" onsubmit="return false;">
+      <div class="adm-field"><label>Student Name <span class="req">*</span></label><input type="text" id="pubAdmName" required></div>
+      <div class="adm-field"><label>Father's Name <span class="req">*</span></label><input type="text" id="pubAdmFather" required></div>
+      <div class="adm-field"><label>Mother's Name <span class="req">*</span></label><input type="text" id="pubAdmMother" required></div>
+      <div class="adm-field"><label>Date of Birth <span class="req">*</span></label><input type="date" id="pubAdmDob" required></div>
+      <div class="adm-field"><label>Birth Registration Number (জন্ম নিবন্ধন নম্বর) <span class="req">*</span></label><input type="text" id="pubAdmBirthRegNo" required></div>
+      <div class="adm-field"><label>Gender <span class="req">*</span></label>
+        <select id="pubAdmGender" required><option value="">— Select —</option><option>ছেলে</option><option>মেয়ে</option></select>
+      </div>
+      <div class="adm-field"><label>Class Applying For <span class="req">*</span></label>
+        <select id="pubAdmClass" required><option value="">— Select —</option><option>ষষ্ঠ</option><option>সপ্তম</option><option>অষ্টম</option><option>নবম</option></select>
+      </div>
+      <div class="adm-field"><label>Blood Group</label>
+        <select id="pubAdmBloodGroup"><option value="">— Select —</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option></select>
+      </div>
+      <div class="adm-field"><label>Religion</label><input type="text" id="pubAdmReligion"></div>
+      <div class="adm-field"><label>Previous School (if any)</label><input type="text" id="pubAdmPrevSchool"></div>
+      <div class="adm-field"><label>Student's Phone (if any)</label><input type="text" id="pubAdmStudentPhone"></div>
+      <div class="adm-field"><label>Guardian's Phone <span class="req">*</span></label><input type="text" id="pubAdmGuardianPhone" required></div>
+      <div class="adm-field"><label>Guardian's Email</label><input type="email" id="pubAdmGuardianEmail"></div>
+      <div class="adm-field"><label>Present Address <span class="req">*</span></label><textarea id="pubAdmAddress" rows="3" required></textarea></div>
+      <div class="adm-field"><label>Student's Photo</label><input type="file" id="pubAdmPhoto" accept="image/*"></div>
+      <button class="btn-solid" type="submit" id="pubAdmSubmitBtn" style="width:100%;margin-top:10px;">✅ আবেদন জমা দিন</button>
+    </form>
+  </div>
+</section>
+
+<section id="teachers" style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head"><p class="tag">শিক্ষকমণ্ডলী</p><h2>আমাদের শিক্ষকবৃন্দ</h2></div>
+    <div class="teacher-grid">
+      <div class="teacher-card"><div class="teacher-photo"></div><div class="info"><h4>মোঃ রফিকুল ইসলাম</h4><p class="subj">গণিত</p><p class="desig">সহকারী শিক্ষক</p></div></div>
+      <div class="teacher-card"><div class="teacher-photo"></div><div class="info"><h4>ফারজানা আক্তার</h4><p class="subj">ইংরেজি</p><p class="desig">সহকারী শিক্ষক</p></div></div>
+      <div class="teacher-card"><div class="teacher-photo"></div><div class="info"><h4>মোঃ শাহজাহান</h4><p class="subj">বাংলা</p><p class="desig">সহকারী প্রধান শিক্ষক</p></div></div>
+      <div class="teacher-card"><div class="teacher-photo"></div><div class="info"><h4>উম্মে হাবিবা</h4><p class="subj">তথ্য ও যোগাযোগ প্রযুক্তি</p><p class="desig">সহকারী শিক্ষক</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="committee">
+  <div class="wrap">
+    <div class="section-head"><p class="tag">কমিটি</p><h2>পরিচালনা কমিটি</h2></div>
+    <h3 id="committeeCurrent" style="margin:0 0 14px;font-size:1.05rem;color:var(--green-deep);scroll-margin-top:90px;">বর্তমান কমিটি</h3>
+    <div class="teacher-grid" id="currentCommitteeGrid"></div>
+    <h3 id="committeePrevious" style="margin:34px 0 14px;font-size:1.05rem;color:var(--green-deep);scroll-margin-top:90px;">পূর্বের কমিটি</h3>
+    <div class="teacher-grid" id="guestCommitteeGrid"></div>
+  </div>
+</section>
+
+<section id="result">
+  <div class="wrap">
+    <div class="result-box">
+      <div>
+        <h2>অনলাইনে রেজাল্ট খুঁজুন</h2>
+        <p>স্টুডেন্ট আইডি বা রোল নম্বর দিয়ে সহজেই পরীক্ষার ফলাফল দেখুন।</p>
+      </div>
+      <form class="result-form" id="webResultForm" onsubmit="return false;">
+        <label>শ্রেণি</label>
+        <select id="resCls"><option>ষষ্ঠ</option><option>সপ্তম</option><option>অষ্টম</option><option selected>নবম</option><option>দশম</option></select>
+        <label>পরীক্ষা</label>
+        <select id="resExam"><option>অর্ধবার্ষিক পরীক্ষা</option><option>বার্ষিক পরীক্ষা</option><option>নির্বাচনী পরীক্ষা</option></select>
+        <label>রোল নম্বর অথবা স্টুডেন্ট আইডি</label>
+        <input type="text" id="resRoll" placeholder="যেমনঃ ২৫ অথবা STU-1001">
+        <label>সেশন</label>
+        <select id="resSession"><option>২০২৬</option><option>২০২৫</option></select>
+        <button class="btn-solid" type="submit" id="resBtn">রেজাল্ট দেখুন</button>
+        <div id="webResultOut" style="margin-top:14px;"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" style="background:var(--paper);border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head"><p class="tag">গ্যালারি</p><h2>বিদ্যালয়ের কার্যক্রম</h2></div>
+    <div class="gallery-grid">
+      <div class="g1"></div><div></div><div></div>
+      <div></div><div></div><div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="section-head"><p class="tag">যোগাযোগ</p><h2>আমাদের সাথে যোগাযোগ করুন</h2></div>
+      <div class="contact-item"><div class="ic">📍</div><div><h4>ঠিকানা</h4><p>পৌরসভা রোড, জেলা সদর, বাংলাদেশ</p></div></div>
+      <div class="contact-item"><div class="ic">📞</div><div><h4>ফোন</h4><p>০২১-১২৩৪৫৬</p></div></div>
+      <div class="contact-item"><div class="ic">✉️</div><div><h4>ইমেইল</h4><p>info@school.edu.bd</p></div></div>
+    </div>
+    <div class="map-box">গুগল ম্যাপ এখানে যুক্ত হবে</div>
+  </div>
+</section>
+
+<footer id="login">
+  <div class="wrap footer-grid">
+    <div>
+      <h4>আদর্শ সরকারি উচ্চ বিদ্যালয়</h4>
+      <p style="font-size:.88rem;">১৯৫৪ সাল থেকে মানসম্মত শিক্ষা প্রদানে প্রতিশ্রুতিবদ্ধ একটি ঐতিহ্যবাহী প্রতিষ্ঠান।</p>
+    </div>
+    <div>
+      <h4>দ্রুত লিংক</h4>
+      <ul><li><a href="#about">স্কুল সম্পর্কে</a></li><li><a href="#teachers">শিক্ষকবৃন্দ</a></li><li><a href="#committee">কমিটি</a></li><li><a href="#notice">নোটিশ</a></li><li><a href="#result">রেজাল্ট</a></li><li><a href="#admission">ভর্তি আবেদন</a></li></ul>
+    </div>
+    <div>
+      <h4>গুরুত্বপূর্ণ</h4>
+      <ul><li><a href="#">ভর্তি তথ্য</a></li><li><a href="#">একাডেমিক ক্যালেন্ডার</a></li><li><a href="#">নিয়মাবলী</a></li><li><a href="#">অভিযোগ জানান</a></li></ul>
+    </div>
+    <div>
+      <h4>অ্যাডমিন প্যানেল</h4>
+      <ul><li><a href="#">শিক্ষক লগইন</a></li><li><a href="#">অ্যাডমিন লগইন</a></li></ul>
+    </div>
+  </div>
+  <div class="foot-bottom"><span>© ২০২৬ আদর্শ সরকারি উচ্চ বিদ্যালয়। সর্বস্বত্ব সংরক্ষিত।</span><span class="dev-credit">Developed By Md.Mahabubar Rahman</span></div>
+</footer>
+
+<script>
+
+/* ================= I18N ENGINE (বাংলা / English toggle) ================= */
+const I18N_BN2EN = {"ভর্তি বিজ্ঞপ্তি":"Admission Notice","অনলাইন ভর্তি ফরম":"Online Admission Form","অফলাইন ভর্তি ফরম":"Offline Admission Form","অনলাইনে রেজাল্ট দেখুন":"View Result Online","পরীক্ষার রুটিন ও নোটিশ":"Exam Routine & Notices","সকল নোটিশ":"All Notices","শিক্ষার্থীর নোটিশ":"Student Notices","শিক্ষক-কর্মচারীর নোটিশ":"Teacher & Staff Notices","আসন্ন ইভেন্ট":"Upcoming Events","বর্তমান কমিটি":"Current Committee","পূর্বের কমিটি":"Previous Committee","সকল শিক্ষক":"All Teachers","প্রধান শিক্ষকের বাণী":"Headmaster's Message","ফটো গ্যালারি":"Photo Gallery","স্কুলের কার্যক্রম ও ইভেন্ট":"School Activities & Events","১৯৫৪ সালে প্রতিষ্ঠিত হওয়ার পর থেকে আদর্শ সরকারি উচ্চ বিদ্যালয় এই অঞ্চলের অন্যতম প্রাচীন ও ঐতিহ্যবাহী শিক্ষা প্রতিষ্ঠান হিসেবে পরিচিত। বিদ্যালয়টি ষষ্ঠ থেকে দশম শ্রেণি পর্যন্ত মানসম্মত শিক্ষা প্রদান করে আসছে।": "Since its founding in 1954, Adarsha Government High School has been known as one of the oldest and most reputed educational institutions in the region. The school has been providing quality education from Class 6 to Class 10.", "আমরা বিশ্বাস করি প্রতিটি শিক্ষার্থীর মধ্যেই সম্ভাবনা লুকিয়ে আছে। আমাদের দায়িত্ব সেই সম্ভাবনাকে সঠিক পথে পরিচালিত করা। অভিভাবক ও শিক্ষকমণ্ডলীর সম্মিলিত প্রচেষ্টাতেই আমরা একটি সুন্দর ভবিষ্যৎ গড়ে তুলতে পারব।": "We believe every student has hidden potential. Our responsibility is to guide that potential in the right direction. Through the combined efforts of parents and teachers, we can build a brighter future together.", "আমাদের লক্ষ্য শুধু পাঠ্যপুস্তক কেন্দ্রিক শিক্ষা নয়, বরং শিক্ষার্থীদের মধ্যে নৈতিকতা, শৃঙ্খলা ও সৃজনশীলতা গড়ে তোলা। খেলাধুলা, বিতর্ক, সাংস্কৃতিক কার্যক্রম ও বিজ্ঞান চর্চায় আমরা সমান গুরুত্ব দিয়ে থাকি।": "Our goal is not just textbook-centered education, but to build ethics, discipline and creativity among students. We give equal importance to sports, debate, cultural activities and science practice.", "ষষ্ঠ থেকে দশম শ্রেণি পর্যন্ত বিজ্ঞান, ব্যবসায় শিক্ষা ও মানবিক বিভাগে শিক্ষা কার্যক্রম পরিচালিত হয়।": "Education is provided from Class 6 to Class 10 in the Science, Business Studies and Humanities groups.", "এই বিদ্যালয়ের একজন নিয়মিত শিক্ষার্থী। তার আচরণ ও নৈতিক চরিত্র সন্তোষজনক বলে বিবেচিত হয়েছে।": "is a regular student of this school. His/her conduct and moral character have been found satisfactory.", "শিক্ষার্থী ও অভিভাবকদের ঐকান্তিক প্রচেষ্টা এবং শিক্ষকমণ্ডলীর নিরলস পরিশ্রমের ফসল এই কৃতিত্ব।": "This achievement is the result of the sincere effort of students and parents, and the tireless hard work of the teaching staff.", "ষষ্ঠ থেকে নবম শ্রেণিতে ভর্তির জন্য প্রয়োজনীয় তথ্য ও ফরম নোটিশ বোর্ড থেকে সংগ্রহ করুন।": "Please collect the required information and forms for admission to Class 6-9 from the notice board.", "১৯৫৪ সাল থেকে মানসম্মত শিক্ষা প্রদানে প্রতিশ্রুতিবদ্ধ একটি ঐতিহ্যবাহী প্রতিষ্ঠান।": "A traditional institution committed to providing quality education since 1954.", "১৯৫৪ সাল থেকে মানসম্মত শিক্ষা প্রদানে প্রতিশ্রুতিবদ্ধ একটি ঐতিহ্যবাহী প্রতিষ্ঠান": "A traditional institution committed to providing quality education since 1954", "যেখানে শৃঙ্খলা, নৈতিকতা ও একাডেমিক উৎকর্ষতাকে সমান গুরুত্ব দেওয়া হয়।": "where discipline, ethics and academic excellence are given equal importance.", "প্রতিটি বাটনে চাপলে নতুন উইন্ডোতে প্রিন্ট-রেডি রিপোর্ট খুলবে।": "Clicking each button will open a print-ready report in a new window.", "স্টুডেন্ট আইডি বা রোল নম্বর দিয়ে সহজেই পরীক্ষার ফলাফল দেখুন।": "Easily check your exam results using your Student ID or Roll Number.", "বার্ষিক ক্রীড়া প্রতিযোগিতা আগামী ১৫ অক্টোবর অনুষ্ঠিত হবে।": "The annual sports competition will be held on October 15.", "নবম শ্রেণির অর্ধবার্ষিক পরীক্ষার রুটিন প্রকাশিত হয়েছে।": "The half-yearly exam routine for Class 9 has been published.", "২০২৬ আদর্শ সরকারি উচ্চ বিদ্যালয়। সর্বস্বত্ব সংরক্ষিত।": "2026 Adarsha Government High School. All rights reserved.", "এও স্বয়ংক্রিয়ভাবে আপডেট হবে (ডেটাবেজ সংযুক্ত হলে)।": "will also update automatically (once connected to a database).", "বিদ্যালয় প্রাঙ্গণে সর্বদা এই কার্ড সাথে রাখতে হবে।": "This card must always be carried within the school premises.", "আপনি কি নিশ্চিত এই শিক্ষার্থীর তথ্য মুছে ফেলতে চান": "Are you sure you want to delete this student's information", "২০২৭ শিক্ষাবর্ষে ভর্তি কার্যক্রম শীঘ্রই শুরু হচ্ছে": "Admission for the 2027 academic year is starting soon", "আপনি কি নিশ্চিত এই শিক্ষকের তথ্য মুছে ফেলতে চান": "Are you sure you want to delete this teacher's information", "এই শ্রেণি ও পরীক্ষার কোনো সংরক্ষিত ফলাফল নেই।": "There is no saved result for this class and exam.", "কার্ডটি পাওয়া গেলে বিদ্যালয় অফিসে ফেরত দিন।": "If found, please return this card to the school office.", "পেমেন্ট সফলভাবে গ্রহণ করা হয়েছে। রিসিট নম্বর": "Payment received successfully. Receipt number", "বিদ্যালয় পরিচালনা কমিটির সভা আগামী শুক্রবার।": "School Managing Committee meeting is next Friday.", "থেকে সংশ্লিষ্ট ফলাফল সংরক্ষণ করা থাকতে হবে।)": "the relevant result must already be saved.)", "পাসওয়ার্ড (অভিভাবকের রেজিস্টার্ড ফোন নম্বর)": "Password (Guardian's registered phone number)", "সকল শ্রেণির অভিভাবকদের উপস্থিত থাকার অনুরোধ।": "All parents are requested to attend.", "শিক্ষার্থী ও সার্টিফিকেটের ধরন নির্বাচন করে": "Select the student and certificate type,", "সন্তানের তথ্য, ফলাফল ও ফি দেখতে লগইন করুন": "Log in to see your child's information, results and fees", "শিক্ষার মাধ্যমে গড়ে তুলছি আগামীর নাগরিক": "Building tomorrow's citizens through education", "ফাইলে ব্যাকআপ নিন অথবা পুনরুদ্ধার করুন।": "Back up to a file or restore from one.", "উপরে থেকে একজন শিক্ষার্থী নির্বাচন করে": "select a student from above,", "এই কার্ডটি আদর্শ বিদ্যালয়ের সম্পত্তি।": "This card is the property of Adarsha School.", "নাম, আইডি ও রোল নম্বর অবশ্যই দিতে হবে।": "Name, ID and Roll Number are required.", "ব্যাকআপ সফলভাবে পুনরুদ্ধার করা হয়েছে।": "Backup restored successfully.", "এই শ্রেণি-শাখায় কোনো শিক্ষার্থী নেই।": "There are no students in this class-section.", "থেকে শিক্ষার্থী ইম্পোর্ট করা হয়েছে।": "students imported from", "চাপুন এবং শিক্ষার্থী নির্বাচন করুন।": "and select students.", "এখনো কোনো উপস্থিতি সংরক্ষিত হয়নি।": "No attendance has been saved yet.", "নিবন্ধনের শেষ তারিখ ২০ সেপ্টেম্বর।": "Last date of registration is September 20.", "অর্ধবার্ষিক পরীক্ষার রুটিন প্রকাশ": "Half-yearly exam routine published", "শ্রেণিভিত্তিক প্রজেক্ট প্রদর্শনী।": "Class-wise project exhibition.", "উপস্থিতির হার (সর্বশেষ সংরক্ষিত)": "Attendance rate (last saved)", "এই মর্মে প্রত্যয়ন করা যাচ্ছে যে": "This is to certify that", "তথ্য সঠিক নয়, আবার চেষ্টা করুন।": "Information is incorrect, please try again.", "নবম ও দশম শ্রেণির জন্য প্রযোজ্য।": "Applicable for Class 9 and Class 10.", "স্কুলের তথ্য সংরক্ষণ করা হয়েছে।": "School information has been saved.", "ইমেইল অথবা পাসওয়ার্ড সঠিক নয়।": "Email or password is incorrect.", "এখনো কোনো ফলাফল সংরক্ষিত হয়নি।": "No result has been saved yet.", "এসএসসি পরীক্ষায় পাসের হার ৯৭.২": "SSC exam pass rate 97.2", "শ্রেণিভিত্তিক শিক্ষার্থী সংখ্যা": "Class-wise number of students", "এখনো কোনো রুটিন যোগ করা হয়নি।": "No routine has been added yet.", "কোনো শিক্ষার্থী পাওয়া যায়নি।": "No students found.", "পৌরসভা রোড, জেলা সদর, বাংলাদেশ": "Pouroshova Road, District Sadar, Bangladesh", "প্রধান শিক্ষকের স্বাক্ষর ও সিল": "Headmaster's Signature & Seal", "এখনো কোনো মেসেজ পাঠানো হয়নি।": "No message has been sent yet.", "নাম, আইডি বা রোল দিয়ে খুঁজুন": "Search by name, ID or roll", "বিদ্যালয় মাঠে সকাল ৯টা থেকে।": "At the school ground from 9 AM.", "শ্রেণি ও পরীক্ষা নির্বাচন করে": "select class and exam,", "উপস্থিতি সংরক্ষণ করা হয়েছে।": "Attendance has been saved.", "এই কার্ড হস্তান্তরযোগ্য নয়।": "This card is non-transferable.", "জ্ঞান । শৃঙ্খলা । শ্রেষ্ঠত্ব": "Knowledge . Discipline . Excellence", "নাম ও বিষয় অবশ্যই দিতে হবে।": "Name and subject are required.", "অভিভাবক সমাবেশ অনুষ্ঠিত হবে": "Parents' gathering will be held", "আদর্শ সরকারি উচ্চ বিদ্যালয়": "Adarsha Government High School", "এখনো কোনো রিসিট তৈরি হয়নি।": "No receipt has been created yet.", "বার্ষিক ক্রীড়া প্রতিযোগিতা": "Annual Sports Competition", "বিজ্ঞান / ব্যবসায় / মানবিক": "Science / Business Studies / Humanities", "শ্রেণি ও তারিখ নির্বাচন করে": "select class and date,", "কোনো শিক্ষক পাওয়া যায়নি।": "No teachers found.", "গুগল ম্যাপ এখানে যুক্ত হবে": "Google Map will be embedded here", "নবীনবরণ ও পুরস্কার বিতরণী।": "Freshers' reception and prize giving.", "পাসওয়ার্ড (অভিভাবকের ফোন)": "Password (Guardian's Phone)", "ইভেন্টের নাম ও তারিখ দিন।": "Enter the event name and date.", "নাম বা বিষয় দিয়ে খুঁজুন": "Search by name or subject", "ফলাফল সংরক্ষণ করা হয়েছে।": "Result has been saved.", "বার্ষিক ক্রীড়া উৎসব ২০২৫": "Annual Sports Festival 2025", "শিক্ষার্থী নির্বাচন করুন।": "Please select a student.", "শিক্ষার্থীর তথ্য সম্পাদনা": "Edit Student Information", "আমাদের সাথে যোগাযোগ করুন": "Contact Us", "কোনো ফলাফল সংরক্ষিত নেই।": "No results saved.", "তথ্য ও যোগাযোগ প্রযুক্তি": "Information & Communication Technology", "নতুন শিক্ষার্থী যোগ করুন": "Add New Student", "নাম বা আইডি দিয়ে খুঁজুন": "Search by name or ID", "প্রধান শিক্ষকের স্বাক্ষর": "Headmaster's Signature", "বাল্ক আইডি কার্ড জেনারেট": "Bulk ID Card Generate", "ব্যাকআপ ফাইলটি সঠিক নয়।": "The backup file is invalid.", "শ্রেণি শিক্ষকের স্বাক্ষর": "Class Teacher's Signature", "ছবি (আইডি কার্ডের জন্য)": "Photo (for ID Card)", "স্টুডেন্ট লিস্ট রিপোর্ট": "Student List Report", "অনলাইনে রেজাল্ট খুঁজুন": "Search Result Online", "প্রধান শিক্ষকের বার্তা": "Headmaster's Message", "বাংলাদেশ ও বিশ্বপরিচয়": "Bangladesh & Global Studies", "শিক্ষকের তথ্য সম্পাদনা": "Edit Teacher Information", "শিক্ষার্থীর স্কুল আইডি": "Student's School ID", "হিসাব করে সংরক্ষণ করুন": "Calculate and save", "আমাদের স্কুল সম্পর্কে": "About Our School", "এই তথ্য পরিবর্তন করলে": "Changing this information", "নতুন পিরিয়ড যোগ করুন": "Add New Period", "পাসওয়ার্ড ভুলে গেছেন": "Forgot Password", "বিদ্যালয়ের কার্যক্রম": "School Activities", "আদর্শ উচ্চ বিদ্যালয়": "Adarsha High School", "একাডেমিক ক্যালেন্ডার": "Academic Calendar", "ক্লাস ট্যাবুলেশন শীট": "Class Tabulation Sheet", "নতুন শিক্ষক যোগ করুন": "Add New Teacher", "পেমেন্ট নিশ্চিত করুন": "Confirm Payment", "পৌরসভা রোড, জেলা সদর": "Pouroshova Road, District Sadar", "প্রিন্টযোগ্য রিপোর্ট": "Printable Report", "ব্যাকআপ ডাউনলোড করুন": "Download Backup", "ব্যাকআপ রিস্টোর করুন": "Restore Backup", "মেসেজ পাঠানো হয়েছে।": "Message has been sent.", "ম্যানেজমেন্ট প্যানেল": "Management Panel", "শিরোনাম ও তারিখ দিন।": "Enter title and date.", "শ্রেণি নির্বাচন করুন": "Select Class", "সহকারী প্রধান শিক্ষক": "Assistant Headmaster", "অর্ধবার্ষিক পরীক্ষা": "Half-Yearly Exam", "অ্যালবামের নাম দিন।": "Enter the album name.", "আইডি কার্ড জেনারেটর": "ID Card Generator", "প্রধান শিক্ষকের নাম": "Headmaster's Name", "যেমনঃ ১০:০০ - ১০:৪৫": "e.g. 10:00 - 10:45", "শ্রেণি ও বিষয় দিন।": "Enter class and subject.", "সাংস্কৃতিক অনুষ্ঠান": "Cultural Program", "০২ সেপ্টেম্বর, ২০২৬": "September 2, 2026", "১২ সেপ্টেম্বর, ২০২৬": "September 12, 2026", "অ্যালবাম তৈরি করুন": "Create Album", "আপনার বার্তা লিখুন": "Write your message", "আমাদের শিক্ষকবৃন্দ": "Our Teachers", "ইউজার ম্যানেজমেন্ট": "User Management", "ক্লাস রুটিন তালিকা": "Class Routine List", "ফি কালেকশন রিপোর্ট": "Fee Collection Report", "মোট নম্বরঃ ৫৪০/৬০০": "Total Marks: 540/600", "মোট নম্বরঃ ৫৭০/৬০০": "Total Marks: 570/600", "সঠিক পরিমাণ লিখুন।": "Please enter a valid amount.", "সব কার্ড তৈরি করুন": "Generate All Cards", "নির্বাচনী পরীক্ষা": "Selection Test", "প্রতিষ্ঠাকাল ১৯৫৪": "Founded 1954", "বিজ্ঞান মেলা ২০২৬": "Science Fair 2026", "বিদ্যালয়ের নোটিশ": "School Notices", "ব্যাকআপ / রিস্টোর": "Backup / Restore", "শিক্ষার্থী সংখ্যা": "Number of Students", "শ্রেণি ও শাখাসমূহ": "Classes & Sections", "সিস্টেমের সব ডেটা": "All system data", "অ্যাডমিন প্যানেল": "Admin Panel", "ইমেইল / ইউজারনেম": "Email / Username", "কোনো ইভেন্ট নেই।": "No events.", "কোনো বকেয়া নেই।": "No dues.", "জনাব আব্দুল করিম": "Mr. Abdul Karim", "নতুন মেসেজ পাঠান": "Send New Message", "নাম ও ইমেইল দিন।": "Enter name and email.", "নির্দিষ্ট শ্রেণি": "Specific Class", "মোঃ রফিকুল ইসলাম": "Md. Rafiqul Islam", "মোঃ শফিকুল ইসলাম": "Md. Shafiqul Islam", "শিক্ষাগত যোগ্যতা": "Educational Qualification", "সাম্প্রতিক নোটিশ": "Recent Notices", "সাম্প্রতিক ফলাফল": "Recent Results", "সাম্প্রতিক ভর্তি": "Recent Admissions", "অভিভাবক পোর্টাল": "Parent Portal", "আদর্শ বিদ্যালয়": "Adarsha School", "কার্ড তৈরি করুন": "Generate Card", "কোনো নোটিশ নেই।": "No notices.", "নতুন শিক্ষার্থী": "New Student", "নোটিশের শিরোনাম": "Notice Title", "বার্ষিক পরীক্ষা": "Annual Exam", "বিস্তারিত পড়ুন": "Read More", "ভর্তি বিজ্ঞপ্তি": "Admission Notice", "মাসিক ফি সংগ্রহ": "Monthly Fee Collection", "মোঃ কামাল হোসেন": "Md. Kamal Hossain", "রেজাল্ট এন্ট্রি": "Result Entry", "রেজাল্ট রিপোর্ট": "Result Report", "শিক্ষার্থী আইডি": "Student ID", "শিক্ষার্থীর নাম": "Student Name", "শ্রেণিঃ নবম - ক": "Class: 9 - A", "স্টুডেন্ট লিস্ট": "Student List", "অভিভাবক সমাবেশ": "Parents' Gathering", "অ্যালবামের নাম": "Album Name", "এম.এসসি, বি.এড": "M.Sc, B.Ed", "ট্যাবুলেশন শীট": "Tabulation Sheet", "তানিয়া আক্তার": "Tania Akter", "পেমেন্ট পদ্ধতি": "Payment Method", "ফারজানা আক্তার": "Farzana Akter", "ফি ব্যবস্থাপনা": "Fee Management", "ফি সংগ্রহ করুন": "Collect Fee", "বকেয়া রিপোর্ট": "Due Report", "মার্কস এন্ট্রি": "Marks Entry", "মেসেজ হিস্টোরি": "Message History", "মোট শিক্ষার্থী": "Total Students", "যোগদানের তারিখ": "Joining Date", "রিসিট জেনারেটর": "Receipt Generator", "রিসিট হিস্টোরি": "Receipt History", "রেজাল্ট খুঁজুন": "Search Result", "সংরক্ষিত ফলাফল": "Saved Results", "সাকিব আল হাসান": "Sakib Al Hasan", "স্কুল সম্পর্কে": "About School", "স্থানান্তর সনদ": "Transfer Certificate", "অভিভাবকের ফোন": "Guardian's Phone", "অ্যাডমিন লগইন": "Admin Login", "আজকের কালেকশন": "Today's Collection", "উপস্থিতির হার": "Attendance Rate", "একাডেমিক তথ্য": "Academic Information", "গড় পাসের হার": "Average Pass Rate", "পরীক্ষার সেশন": "Exam Session", "প্রধান শিক্ষক": "Headmaster", "প্রাপ্ত নম্বর": "Marks Obtained", "ফি সংগ্রহ (৳)": "Fee Amount (৳)", "বিদ্যালয় মাঠ": "School Ground", "মোঃ ইউনুস আলী": "Md. Yunus Ali", "যেমনঃ নবম - ক": "e.g. Class 9 - A", "রেজাল্ট দেখুন": "View Result", "শ্রেণি - শাখা": "Class - Section", "শ্রেণি, শাখাঃ": "Class, Section:", "সর্বশেষ নোটিশ": "Latest Notice", "সর্বশেষ ফলাফল": "Latest Results", "সহকারী শিক্ষক": "Assistant Teacher", "০২ সেপ্টেম্বর": "September 2", "০৮ সেপ্টেম্বর": "September 8", "১২ সেপ্টেম্বর": "September 12", "অভিভাবক লগইন": "Parent Login", "অভিযোগ জানান": "File a Complaint", "অষ্টম শ্রেণি": "Class 8", "আসন্ন ইভেন্ট": "Upcoming Events", "ইভেন্টের নাম": "Event Name", "উম্মে হাবিবা": "Umme Habiba", "গুরুত্বপূর্ণ": "Important", "জ্ঞানই শক্তি": "Knowledge is Power", "নুসরাত জাহান": "Nusrat Jahan", "প্রতিষ্ঠাকাল": "Founded", "ফলাফল বিবরণী": "Result Details", "বিজ্ঞান মেলা": "Science Fair", "মূল অ্যাডমিন": "Super Admin", "মেসেজ লিখুন।": "Write a message.", "মোঃ শাহজাহান": "Md. Shahjahan", "রোকেয়া বেগম": "Rokeya Begum", "শিক্ষকমণ্ডলী": "Teaching Staff", "শিক্ষকের নাম": "Teacher's Name", "সংরক্ষণ করুন": "Save", "সপ্তম শ্রেণি": "Class 7", "স্কুল সেটিংস": "School Settings", "স্কুলের তথ্য": "School Information", "আব্দুল লতিফ": "Abdul Latif", "এম.এ, বি.এড": "M.A, B.Ed", "ক্লাস রুটিন": "Class Routine", "চাপুন। (আগে": "click. (First", "টিচার লিস্ট": "Teacher List", "ধর্ম শিক্ষা": "Religious Studies", "নতুন শিক্ষক": "New Teacher", "নোটিশ দেখুন": "View Notice", "প্রকাশ করুন": "Publish", "প্রশংসাপত্র": "Certificate of Appreciation", "ফেসবুক লিংক": "Facebook Link", "বৃহস্পতিবার": "Thursday", "রাকিব হাসান": "Rakib Hasan", "রেজাল্ট শীট": "Result Sheet", "রেহানা বেগম": "Rehana Begum", "শিক্ষক লগইন": "Teacher Login", "শিক্ষকবৃন্দ": "Teachers", "ষষ্ঠ শ্রেণি": "Class 6", "সকল অভিভাবক": "All Guardians", "সার্টিফিকেট": "Certificate", "স্কুলের নাম": "School Name", "আইডি নম্বর": "ID Number", "চরিত্র সনদ": "Character Certificate", "জন্ম তারিখ": "Date of Birth", "ড্যাশবোর্ড": "Dashboard", "দশম শ্রেণি": "Class 10", "দ্রুত লিংক": "Quick Links", "নবম শ্রেণি": "Class 9", "নিষ্ক্রিয়": "Inactive", "পরিমাণ (৳)": "Amount (৳)", "পরীক্ষা ফি": "Exam Fee", "পাসওয়ার্ড": "Password", "ফরিদা বেগম": "Farida Begum", "ফি কালেকশন": "Fee Collection", "ভর্তি তথ্য": "Admission Info", "মোট নম্বরঃ": "Total Marks:", "মোট বকেয়া": "Total Due", "মোট শিক্ষক": "Total Teachers", "যেমনঃ গণিত": "e.g. Mathematics", "শিক্ষার্থী": "Student", "সালমা বেগম": "Salma Begum", "সেপ্টেম্বর": "September", "সেশনঃ ২০২৬": "Session: 2026", "হিসাবরক্ষক": "Accountant", "অকৃতকার্য": "Failed", "অনুপস্থিত": "Absent", "অপ্রকাশিত": "Unpublished", "আরও জানুন": "Learn More", "এক্সপোর্ট": "Export", "ডেমো লগইন": "Demo Login", "তৈরি করুন": "Generate", "নিয়মাবলী": "Rules", "পিতার নাম": "Father's Name", "ফোন নম্বর": "Phone Number", "বকেয়া ফি": "Due Fee", "ব্যবহারিক": "Practical", "মনে রাখুন": "Remember Me", "মাতার নাম": "Mother's Name", "মিলনায়তন": "Auditorium", "মোট নম্বর": "Total Marks", "যেমনঃ ২০৩": "e.g. 203", "যেমনঃ ৫০০": "e.g. 500", "রুম নম্বর": "Room Number", "রোল নম্বর": "Roll Number", "লগইন করুন": "Login", "সব শ্রেণি": "All Classes", "অ্যাডমিন": "Admin", "ইম্পোর্ট": "Import", "উপস্থিতি": "Attendance", "একাডেমিক": "Academic", "কৃতকার্য": "Passed", "গ্যালারি": "Gallery", "পরিশোধিত": "Paid", "পূর্ণমান": "Full Marks", "প্রকাশিত": "Published", "বাংলাদেশ": "Bangladesh", "ভর্তি ফি": "Admission Fee", "মঙ্গলবার": "Tuesday", "মাসিক ফি": "Monthly Fee", "যেমনঃ ২৫": "e.g. 25", "যোগ করুন": "Add", "রিসিট নং": "Receipt No.", "লোড করুন": "Load", "সব দেখুন": "View All", "৩টি শাখা": "3 Sections", "৪টি শাখা": "4 Sections", "৳ ৩৮,৫০০": "৳ 38,500", "অক্টোবর": "October", "অবস্থাঃ": "Status:", "উপস্থিত": "Present", "নভেম্বর": "November", "পরিচিতি": "About Us", "পরীক্ষা": "Exam", "প্রিন্ট": "Print", "বিজ্ঞান": "Science", "মোট দিন": "Total Days", "যোগাযোগ": "Contact", "রিপোর্ট": "Report", "রেজাল্ট": "Result", "রোলঃ ০৫": "Roll: 05", "শিরোনাম": "Title", "শ্রেণিঃ": "Class:", "সক্রিয়": "Active", "সব শাখা": "All Sections", "সিস্টেম": "System", "সেশন ফি": "Session Fee", "৳ ৩,০০০": "৳ 3,000", "৳ ৮,৪০০": "৳ 8,400", "অবস্থা": "Status", "ইংরেজি": "English", "ইভেন্ট": "Event", "এপ্রিল": "April", "গ্রেডঃ": "Grade:", "চাপুন।": "click.", "ঠিকানা": "Address", "পরিমাণ": "Amount", "প্রাপক": "Recipient", "ফি ধরন": "Fee Type", "ফি নিন": "Collect Fee", "ফেব্রু": "Feb", "বকেয়া": "Due", "বিলম্ব": "Late", "বুধবার": "Wednesday", "ব্যাংক": "Bank", "ভূমিকা": "Role", "মোট ফি": "Total Fee", "রবিবার": "Sunday", "শনিবার": "Saturday", "শিক্ষক": "Teacher", "শ্রেণি": "Class", "সোমবার": "Monday", "অষ্টম": "8th", "আইডিঃ": "ID:", "ইমেইল": "Email", "গ্রেড": "Grade", "ডিলিট": "Delete", "তারিখ": "Date", "নম্বর": "Number", "নোটিশ": "Notice", "পাঠান": "Send", "পিতাঃ": "Father:", "বাংলা": "Bangla", "বাতিল": "Cancel", "বিকাশ": "bKash", "বিভাগ": "Department", "বিষয়": "Subject", "মার্চ": "March", "মেসেজ": "Message", "যেমনঃ": "e.g.", "লগআউট": "Logout", "লিখিত": "Written", "সপ্তম": "7th", "সেশনঃ": "Session:", "স্থান": "Venue", "৳ ৫০০": "৳ 500", "আইডি": "ID", "একশন": "Action", "এডিট": "Edit", "এম.এ": "M.A", "গণিত": "Mathematics", "ছুটি": "Holiday", "জানু": "Jan", "নামঃ": "Name:", "পদবী": "Designation", "ভাষা": "Language", "রোলঃ": "Roll:", "লগইন": "Login", "শাখা": "Section", "ষষ্ঠ": "6th", "সময়": "Time", "জুন": "June", "দশম": "10th", "দিন": "Days", "নগদ": "Cash", "নবম": "9th", "নাম": "Name", "ফোন": "Phone", "মোট": "Total", "রুম": "Room", "রোল": "Roll", "হার": "Rate", "হোম": "Home", "কমিটি": "Committee", "বর্তমান কমিটি": "Current Committee", "অতিথি কমিটি": "Guest Committee", "পরিচালনা কমিটি": "Governing Committee", "অনলাইনে ভর্তির আবেদন করুন": "Apply for Admission Online", "নিচের ফরমটি পূরণ করে জমা দিন — আপনার আবেদন সরাসরি বিদ্যালয়ের অ্যাডমিন প্যানেলে জমা হবে।": "Fill out the form below and submit — your application will go directly to the school's admin panel.", "আবেদন জমা দিন": "Submit Application", "নাম, শ্রেণি ও অভিভাবকের নাম অবশ্যই দিতে হবে।": "Name, class and guardian's name are required.", "আবেদন সফলভাবে জমা হয়েছে। আপনার আবেদন নম্বর: ": "Application submitted successfully. Your application number: ", "। বিদ্যালয় থেকে যোগাযোগ করা হবে।": ". The school will contact you.", "সভাপতি": "President", "সহ-সভাপতি": "Vice-President", "সাধারণ সম্পাদক": "General Secretary", "প্রধান অতিথি": "Chief Guest", "বিশেষ অতিথি": "Special Guest", "ভর্তি": "Admission", "শিক্ষার্থীর নাম": "Student Name", "পূর্বের কমিটি": "Previous Committee", "প্রাক্তন সভাপতি": "Former President", "প্রাক্তন সাধারণ সম্পাদক": "Former General Secretary", "ভর্তি আবেদন": "Admission", "অনলাইনে আবেদন করুন": "Apply online", "ফলাফল দেখুন": "View results", "নোটিশ বোর্ড": "Notice Board", "সর্বশেষ বিজ্ঞপ্তি": "Latest announcements", "বর্তমান ও পূর্বের কমিটি": "Current & previous committee", "আমাদের শিক্ষক": "Our teachers", "ছবি ও কার্যক্রম": "Photos & activities", "ভর্তির আবেদন ফরম": "Admission Application Form", "নিচের ফরমটি সঠিকভাবে পূরণ করে জমা দিন। আবেদন যাচাই করে আমাদের অফিস থেকে আপনার সাথে যোগাযোগ করা হবে।": "Fill out the form below accurately and submit. After reviewing your application, our office will contact you.", "চিহ্নিত (*) ঘরগুলো অবশ্যই পূরণ করতে হবে।": "Fields marked (*) are required."};
+const I18N_EN2BN = {};
+Object.keys(I18N_BN2EN).forEach(function(k){ I18N_EN2BN[I18N_BN2EN[k]] = k; });
+
+/* Word-boundary safe replacement: only matches a phrase when it is NOT
+   directly touching another Bengali letter/digit, so a short phrase can
+   never corrupt text sitting in the middle of an unrelated longer word. */
+const I18N_BN_RANGE = '\u0980-\u09FF';
+function i18nEscapeRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+function i18nBuildRules(map){
+  return Object.keys(map)
+    .filter(function(k){ return k && k.length > 0; })
+    .sort(function(a,b){ return b.length - a.length; })
+    .map(function(k){
+      return [ new RegExp('(?<![' + I18N_BN_RANGE + '])' + i18nEscapeRe(k) + '(?![' + I18N_BN_RANGE + '])', 'g'), map[k] ];
+    });
+}
+const I18N_BN_RULES = i18nBuildRules(I18N_BN2EN);
+const I18N_EN_RULES = i18nBuildRules(I18N_EN2BN);
+
+let currentLang = localStorage.getItem('siteLang') || 'bn';
+
+function i18nTranslateStr(str, rules){
+  if(!str) return str;
+  let out = str;
+  for(let i=0;i<rules.length;i++){
+    if(rules[i][0].test(out)){
+      rules[i][0].lastIndex = 0;
+      out = out.replace(rules[i][0], rules[i][1]);
+    }
+  }
+  return out;
+}
+/* t(): use inside JS-generated strings for literals that should follow the active language */
+function t(bn){ return (currentLang === 'en') ? (I18N_BN2EN[bn] || bn) : bn; }
+
+/* Bengali digits <-> Latin digits (only for text nodes that originally held Bengali digits) */
+const I18N_BN_DIGITS = '\u09E6\u09E7\u09E8\u09E9\u09EA\u09EB\u09EC\u09ED\u09EE\u09EF';
+const i18nDigitNodes = new WeakSet();
+function i18nBnDigitsToEn(s){ return s.replace(/[\u09E6-\u09EF]/g, function(d){ return String(I18N_BN_DIGITS.indexOf(d)); }); }
+function i18nEnDigitsToBn(s){ return s.replace(/[0-9]/g, function(d){ return I18N_BN_DIGITS.charAt(+d); }); }
+function i18nFixDigits(node, lang){
+  if(lang === 'en'){
+    if(/[\u09E6-\u09EF]/.test(node.nodeValue)){ node.nodeValue = i18nBnDigitsToEn(node.nodeValue); i18nDigitNodes.add(node); }
+  } else if(i18nDigitNodes.has(node)){
+    node.nodeValue = i18nEnDigitsToBn(node.nodeValue); i18nDigitNodes.delete(node);
+  }
+}
+
+function i18nWalk(root, lang){
+  if(!root) return;
+  const rules = lang === 'en' ? I18N_BN_RULES : I18N_EN_RULES;
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: function(node){
+      const p = node.parentNode;
+      if(!p || !p.nodeName) return NodeFilter.FILTER_REJECT;
+      const tag = p.nodeName;
+      if(tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT') return NodeFilter.FILTER_REJECT;
+      if(!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  const nodes = [];
+  let n;
+  while((n = walker.nextNode())) nodes.push(n);
+  nodes.forEach(function(node){ node.nodeValue = i18nTranslateStr(node.nodeValue, rules); i18nFixDigits(node, lang); });
+
+  const attrEls = root.nodeType === 1 ? Array.prototype.slice.call(root.querySelectorAll('[placeholder],[title]')) : [];
+  if(root.nodeType === 1 && (root.hasAttribute('placeholder') || root.hasAttribute('title'))) attrEls.push(root);
+  attrEls.forEach(function(el){
+    ['placeholder','title'].forEach(function(attr){
+      if(el.hasAttribute(attr)){
+        el.setAttribute(attr, i18nTranslateStr(el.getAttribute(attr), rules));
+      }
+    });
+  });
+}
+
+const i18nObserver = new MutationObserver(function(mutations){
+  if(currentLang !== 'en') return;
+  mutations.forEach(function(m){
+    m.addedNodes.forEach(function(node){
+      if(node.nodeType === 1){ i18nWalk(node, 'en'); }
+      else if(node.nodeType === 3){
+        const p = node.parentNode;
+        if(p && p.nodeName !== 'SCRIPT' && p.nodeName !== 'STYLE'){
+          node.nodeValue = i18nTranslateStr(node.nodeValue, I18N_BN_RULES);
+          i18nFixDigits(node, 'en');
+        }
+      }
+    });
+  });
+});
+i18nObserver.observe(document.body, {childList:true, subtree:true});
+
+function setLang(lang){
+  currentLang = lang;
+  try{ localStorage.setItem('siteLang', lang); }catch(e){}
+  i18nWalk(document.body, lang);
+  document.documentElement.lang = lang === 'en' ? 'en' : 'bn';
+  ['langToggleLabel'].forEach(function(id){
+    const el = document.getElementById(id);
+    if(el) el.textContent = lang === 'en' ? 'বাং' : 'EN';
+  });
+}
+
+const _i18nOrigAlert = window.alert;
+window.alert = function(msg){ return _i18nOrigAlert(currentLang === 'en' ? i18nTranslateStr(String(msg), I18N_BN_RULES) : msg); };
+const _i18nOrigConfirm = window.confirm;
+window.confirm = function(msg){ return _i18nOrigConfirm(currentLang === 'en' ? i18nTranslateStr(String(msg), I18N_BN_RULES) : msg); };
+
+const _langBtn = document.getElementById('langToggleBtn');
+if(_langBtn) _langBtn.addEventListener('click', function(){ setLang(currentLang === 'en' ? 'bn' : 'en'); });
+if(currentLang === 'en'){ setLang('en'); }
+/* ================= END I18N ENGINE ================= */
+
+  // hamburger
+  const hamBtn = document.getElementById('hamBtn');
+  const navLinks = document.getElementById('navLinks');
+  hamBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // অ্যাডমিন সেটিংস (যোগাযোগ / সোশ্যাল / হোমপেজ শিরোনাম) প্রয়োগ
+  (function(){
+    let s = {};
+    try{ s = JSON.parse(localStorage.getItem('sms_site_settings_v1') || '{}') || {}; }catch(e){ s = {}; }
+    const setTxt = function(el, prefix, val){ if(el && val) el.textContent = prefix + val; };
+    const topSpans = document.querySelectorAll('.topbar .left span');
+    if(topSpans[0]) setTxt(topSpans[0], '📞 ', s.siPhone || s.ciPhone);
+    if(topSpans[1]) setTxt(topSpans[1], '✉️ ', s.ciEmail);
+    const hc = document.querySelectorAll('.header-contact div');
+    if(hc[0] && s.ciAddress && hc[0].lastChild) hc[0].lastChild.nodeValue = s.ciAddress;
+    if(hc[1] && s.ciEmail && hc[1].lastChild) hc[1].lastChild.nodeValue = s.ciEmail;
+    const ci = document.querySelectorAll('.contact-item p');
+    if(ci[0] && s.ciAddress) ci[0].textContent = s.ciAddress;
+    if(ci[1] && (s.siPhone || s.ciPhone)) ci[1].textContent = s.siPhone || s.ciPhone;
+    if(ci[2] && s.ciEmail) ci[2].textContent = s.ciEmail;
+    const mapBox = document.querySelector('.map-box');
+    if(mapBox && s.ciMap && /^https?:\/\//i.test(s.ciMap)){
+      if(/maps\/embed|output=embed/i.test(s.ciMap)){
+        mapBox.textContent = '';
+        const f = document.createElement('iframe'); f.src = s.ciMap; f.loading = 'lazy';
+        f.style.cssText = 'border:0;width:100%;height:100%;min-height:280px;border-radius:inherit;';
+        mapBox.appendChild(f);
+      } else {
+        mapBox.textContent = '';
+        const a = document.createElement('a'); a.href = s.ciMap; a.target = '_blank'; a.rel = 'noopener';
+        a.className = 'btn-solid'; a.textContent = '📍 গুগল ম্যাপে দেখুন';
+        mapBox.appendChild(a);
+      }
+    }
+    const right = document.querySelector('.topbar .right');
+    if(right){
+      const links = right.querySelectorAll('a');
+      const setLink = function(a, url){ if(a && url && /^https?:\/\//i.test(url)){ a.href = url; a.target = '_blank'; a.rel = 'noopener'; } };
+      setLink(links[0], s.slFacebook); setLink(links[1], s.slYoutube);
+      [['slTwitter','Twitter'],['slInstagram','Instagram']].forEach(function(p){
+        if(s[p[0]] && /^https?:\/\//i.test(s[p[0]])){
+          const a = document.createElement('a'); a.href = s[p[0]]; a.target = '_blank'; a.rel = 'noopener'; a.textContent = p[1];
+          right.insertBefore(a, links[2] || null);
+        }
+      });
+    }
+    // হোমপেজ ডিফল্ট প্রথম স্লাইড
+    const first = document.querySelector('.hero-slide.active .hero-text');
+    if(first){
+      const h = first.querySelector('h2'), ey = first.querySelector('.eyebrow');
+      if(h && s.hpTitle) h.textContent = s.hpTitle;
+      if(ey && s.hpSubtitle) ey.textContent = s.hpSubtitle;
+    }
+    window.addEventListener('storage', function(e){ if(e.key === 'sms_site_settings_v1') location.reload(); });
+  })();
+
+  // অ্যাডমিন প্যানেলের নোটিশ / ইভেন্ট / শিক্ষক তালিকা
+  (function(){
+    let d = null;
+    try{ d = JSON.parse(localStorage.getItem('sms_public_content_v1') || 'null'); }catch(e){ d = null; }
+    if(!d) return;
+    const BN_D = '০১২৩৪৫৬৭৮৯';
+    const MONTHS = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+    const bn = function(n){ return String(n).replace(/[0-9]/g, function(x){ return BN_D.charAt(+x); }); };
+    function mkRow(date, title, sub){
+      const row = document.createElement('div'); row.className = 'list-row';
+      const chip = document.createElement('div'); chip.className = 'date-chip';
+      const dt = new Date(date + 'T00:00:00');
+      const dd = document.createElement('div'); dd.className = 'd'; dd.textContent = isNaN(dt) ? '' : bn(('0' + dt.getDate()).slice(-2));
+      const mm = document.createElement('div'); mm.className = 'm'; mm.textContent = isNaN(dt) ? '' : MONTHS[dt.getMonth()];
+      chip.appendChild(dd); chip.appendChild(mm);
+      const body = document.createElement('div');
+      const h = document.createElement('h4'); h.textContent = title; body.appendChild(h);
+      if(sub){ const p = document.createElement('p'); p.textContent = sub; body.appendChild(p); }
+      row.appendChild(chip); row.appendChild(body);
+      return row;
+    }
+    function fill(cardIdx, rows){
+      const cards = document.querySelectorAll('#notice .list-card');
+      const card = cards[cardIdx]; if(!card) return;
+      card.querySelectorAll('.list-row').forEach(function(r){ r.remove(); });
+      if(!rows.length){ const e = document.createElement('div'); e.className = 'list-row'; e.textContent = 'এখনো কিছু যোগ করা হয়নি।'; card.appendChild(e); return; }
+      rows.forEach(function(r){ card.appendChild(r); });
+    }
+    if(Array.isArray(d.notices)){
+      const ns = d.notices.slice().sort(function(a,b){ return (b.date||'').localeCompare(a.date||''); }).slice(0,5);
+      fill(0, ns.map(function(n){ return mkRow(n.date, n.title, ''); }));
+      const items = document.querySelector('.ticker-items');
+      if(items && ns.length){
+        items.textContent = '';
+        ns.concat(ns).forEach(function(n){ const s = document.createElement('span'); s.textContent = n.title; items.appendChild(s); });
+      }
+    }
+    if(Array.isArray(d.events)){
+      const es = d.events.slice().sort(function(a,b){ return (a.date||'').localeCompare(b.date||''); }).slice(0,5);
+      fill(1, es.map(function(e){ return mkRow(e.date, e.name, e.location); }));
+    }
+    if(Array.isArray(d.teachers) && d.teachers.length){
+      const grid = document.querySelector('#teachers .teacher-grid');
+      if(grid){
+        grid.textContent = '';
+        d.teachers.forEach(function(t){
+          const card = document.createElement('div'); card.className = 'teacher-card';
+          const ph = document.createElement('div'); ph.className = 'teacher-photo';
+          const info = document.createElement('div'); info.className = 'info';
+          const h = document.createElement('h4'); h.textContent = t.name;
+          const s = document.createElement('p'); s.className = 'subj'; s.textContent = t.subject || '';
+          const g = document.createElement('p'); g.className = 'desig'; g.textContent = t.desig || '';
+          info.appendChild(h); info.appendChild(s); info.appendChild(g);
+          card.appendChild(ph); card.appendChild(info); grid.appendChild(card);
+        });
+      }
+    }
+    window.addEventListener('storage', function(e){ if(e.key === 'sms_public_content_v1') location.reload(); });
+  })();
+
+  // ===== স্কুল পরিচয় (নাম / লোগো / পদবী / প্রধানের তথ্য) — অ্যাডমিন > School Information থেকে সব জায়গায় প্রয়োগ =====
+  window.schoolIdent = function(){
+    var s = {}, b = {};
+    try{ s = JSON.parse(localStorage.getItem('sms_site_settings_v1') || '{}') || {}; }catch(e){}
+    try{ b = JSON.parse(localStorage.getItem('sms_branding_v1') || '{}') || {}; }catch(e){}
+    return { name: s.siName || window.__defSchoolName || document.title, shortName: s.siShortName || '', eiin: s.siEiin || '', est: s.siEstYear || '',
+      address: s.ciAddress || '', phone: s.siPhone || s.ciPhone || '', email: s.ciEmail || '', web: s.siWebsite || '',
+      principal: s.siPrincipalName || '', title: s.siPrincipalTitle || 'প্রধান শিক্ষক', msg: s.siPrincipalMsg || '', desc: s.siShortDesc || '',
+      logo: b.logo || '', sign: b.principalSign || '', photo: b.principalPhoto || '' };
+  };
+  window.__defSchoolName = document.title;
+  (function(){
+    var I = window.schoolIdent();
+    var DEF = 'আদর্শ সরকারি উচ্চ বিদ্যালয়', DEFS = 'আদর্শ বিদ্যালয়', DEFT = 'প্রধান শিক্ষক', DEFEST = '১৯৫৪', DEFEIIN = '১২০৭১৯';
+    var possess = /[A-Za-z]$/.test(I.title) ? I.title + "'s" : I.title + 'ের';
+    /* ইংরেজি মোডে ডিফল্ট নাম আগেই অনুবাদ হয়ে যায় — সেগুলোও বদলাতে হবে */
+    var EN = (typeof I18N_BN2EN !== 'undefined') ? I18N_BN2EN : {};
+    var ENDEF = EN[DEF] || 'Adarsha Government High School', ENDEFS = EN[DEFS] || 'Adarsha School';
+    var latin = function(x){ return String(x).replace(/[\u09E6-\u09EF]/g, function(d){ return '\u09E6\u09E7\u09E8\u09E9\u09EA\u09EB\u09EC\u09ED\u09EE\u09EF'.indexOf(d); }); };
+    function fix(t){
+      if(I.name && ENDEF && t.indexOf(ENDEF) > -1) t = t.split(ENDEF).join(I.name);
+      if((I.shortName || I.name) && ENDEFS && t.indexOf(ENDEFS) > -1) t = t.split(ENDEFS).join(I.shortName || I.name);
+      if(I.est && latin(I.est) !== '1954') t = t.replace(/\b1954\b/g, latin(I.est));
+      if(I.name && I.name !== DEF) t = t.split(DEF).join(I.name);
+      if(I.name && I.name !== DEF) t = t.split(DEFS).join(I.shortName || I.name);
+      else if(I.shortName) t = t.split(DEFS).join(I.shortName);
+      if(I.title !== DEFT){ t = t.replace(/(?<!সহকারী )প্রধান শিক্ষকের/g, possess); t = t.replace(/(?<!সহকারী )প্রধান শিক্ষক/g, I.title); }
+      if(I.est && I.est !== DEFEST) t = t.split(DEFEST).join(I.est);
+      if(I.eiin && I.eiin !== DEFEIIN) t = t.split(DEFEIIN).join(I.eiin);
+      return t;
+    }
+    document.title = fix(document.title);
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null), n, list = [];
+    while((n = w.nextNode())){
+      var par = n.parentNode && n.parentNode.nodeName;
+      if(par === 'SCRIPT' || par === 'STYLE' || par === 'TEXTAREA' || par === 'NOSCRIPT') continue;
+      list.push(n);
+    }
+    list.forEach(function(t){ var v = fix(t.nodeValue); if(v !== t.nodeValue) t.nodeValue = v; });
+    // হেডার সাব-লাইন
+    var sub = document.querySelector('.school-name p');
+    if(sub && (I.est || I.eiin)) sub.textContent = (I.est ? 'প্রতিষ্ঠাকাল ' + I.est + ' · ' : '') + (I.eiin ? 'EIIN: ' + I.eiin + ' · ' : '') + 'বাংলাদেশ';
+    // প্রধানের কার্ড
+    var pc = document.getElementById('principal');
+    if(pc){
+      var h = pc.querySelector('h4'), role = pc.querySelector('.role'), msg = role && role.nextElementSibling, av = pc.querySelector('.avatar');
+      if(h && I.principal) h.textContent = I.principal;
+      if(role) role.textContent = I.title;
+      if(msg && I.msg) msg.textContent = '"' + I.msg.replace(/^"|"$/g,'') + '"';
+      if(av && I.photo){ av.style.backgroundImage = "url('" + I.photo + "')"; av.style.backgroundSize = 'cover'; av.style.backgroundPosition = 'center'; av.textContent = ''; }
+    }
+    // হোম পেজ হিরো: স্কুলের নাম ও প্রধান শিক্ষকের নাম (ডিফল্ট বা ব্যানার — সব স্লাইডেই দেখায়)
+    var hs = document.getElementById('heroSchool');
+    var hideBar = false; try{ hideBar = (JSON.parse(localStorage.getItem('sms_site_settings_v1')||'{}')||{}).hpShowSchoolBar === 'hide'; }catch(e){}
+    if(hs && I.name && !hideBar){
+      hs.querySelector('.nm').textContent = I.name;
+      hs.querySelector('.pr').textContent = I.principal ? (I.title + ': ' + I.principal) : '';
+      hs.style.display = 'block';
+    }
+    // সংক্ষিপ্ত পরিচিতি
+    if(I.desc){ var ps = document.querySelectorAll('#about .about-grid > div:first-child > p'); if(ps[0]) ps[0].textContent = I.desc; }
+  })();
+
+  // অ্যাডমিন প্যানেল থেকে সেভ করা স্কুল লোগো থাকলে হেডারের লোগো-ব্যাজে সেটাই দেখাবে
+  (function(){
+    let b = {};
+    try{ b = JSON.parse(localStorage.getItem('sms_branding_v1') || '{}') || {}; }catch(e){ b = {}; }
+    if(!b.logo) return;
+    document.querySelectorAll('.logo-badge').forEach(function(el){
+      el.style.backgroundImage = "url('" + b.logo + "')";
+      el.style.backgroundSize = 'cover';
+      el.style.backgroundPosition = 'center';
+      el.textContent = '';
+    });
+    if(b.favicon){
+      let link = document.querySelector('link[rel="icon"]');
+      if(!link){ link = document.createElement('link'); link.rel = 'icon'; document.head.appendChild(link); }
+      link.href = b.favicon;
+    }
+  })();
+
+  // অ্যাডমিন প্যানেল থেকে যোগ করা ব্যানার ছবি (একাধিক) থাকলে সেগুলোই স্লাইডে দেখাবে
+  (function(){
+    let list = [];
+    try{ list = JSON.parse(localStorage.getItem('sms_banners_v1') || '[]'); }catch(e){ list = []; }
+    if(!Array.isArray(list)) list = [];
+    list = list.filter(function(b){ return b && b.img; });
+    if(!list.length) return;
+    const hero = document.getElementById('home');
+    const dotsEl = document.getElementById('heroDots');
+    if(!hero || !dotsEl) return;
+    hero.querySelectorAll('.hero-slide').forEach(function(s){ s.remove(); });
+    list.forEach(function(b, i){
+      const s = document.createElement('div');
+      s.className = 'hero-slide banner-img' + (i === 0 ? ' active' : '');
+      s.style.backgroundImage = "url('" + b.img + "')";
+      const title = ('title' in b) ? b.title : b.text;
+      const desc = ('title' in b) ? b.text : '';
+      if(title || desc){
+        const wrap = document.createElement('div'); wrap.className = 'wrap';
+        const ht = document.createElement('div'); ht.className = 'hero-text';
+        if(title){ const h = document.createElement('h2'); h.textContent = title; ht.appendChild(h); }
+        if(desc){ const d = document.createElement('p'); d.className = 'desc'; d.textContent = desc; ht.appendChild(d); }
+        wrap.appendChild(ht); s.appendChild(wrap);
+      }
+      hero.insertBefore(s, dotsEl);
+    });
+    window.addEventListener('storage', function(e){ if(e.key === 'sms_banners_v1') location.reload(); });
+  })();
+
+  // hero slider
+  const slides = document.querySelectorAll('.hero-slide');
+  const dotsWrap = document.getElementById('heroDots');
+  slides.forEach((_, i) => {
+    const d = document.createElement('span');
+    if (i === 0) d.classList.add('active');
+    d.addEventListener('click', () => showSlide(i));
+    dotsWrap.appendChild(d);
+  });
+  const dots = dotsWrap.querySelectorAll('span');
+  let current = 0;
+  function showSlide(i){
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = i;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+  setInterval(() => showSlide((current + 1) % slides.length), 5000);
+
+  /* ---------------- COMMITTEE (রেন্ডার — অ্যাডমিন প্যানেলের সাথে localStorage দিয়ে সিঙ্ক) ---------------- */
+  const COMMITTEE_LS_KEY = 'sms_committee_v1';
+  const committeeDefaults = {
+    current: [
+      {name:'জনাব আব্দুল করিম', desig:'সভাপতি', phone:'', photo:''},
+      {name:'মোঃ ইউনুস আলী', desig:'সহ-সভাপতি', phone:'', photo:''},
+      {name:'রোকেয়া বেগম', desig:'সাধারণ সম্পাদক', phone:'', photo:''}
+    ],
+    guest: [
+      {name:'মোঃ শাহজাহান', desig:'প্রাক্তন সভাপতি', phone:'', photo:''},
+      {name:'ফরিদা বেগম', desig:'প্রাক্তন সাধারণ সম্পাদক', phone:'', photo:''}
+    ]
+  };
+  function committeeCardHtml(m){
+    const photoStyle = m.photo ? `background-image:url('${m.photo}');background-size:cover;background-position:center;` : '';
+    return `<div class="teacher-card"><div class="teacher-photo" style="${photoStyle}"></div>
+      <div class="info"><h4>${m.name}</h4><p class="desig">${m.desig}</p>${m.phone ? `<p class="subj">${m.phone}</p>` : ''}</div></div>`;
+  }
+  function renderCommitteeSection(){
+    let data = null;
+    try{ data = JSON.parse(localStorage.getItem(COMMITTEE_LS_KEY) || 'null'); }catch(e){ data = null; }
+    const cur = (data && Array.isArray(data.current) && data.current.length) ? data.current : committeeDefaults.current;
+    const guest = (data && Array.isArray(data.guest) && data.guest.length) ? data.guest : committeeDefaults.guest;
+    const curGrid = document.getElementById('currentCommitteeGrid');
+    const guestGrid = document.getElementById('guestCommitteeGrid');
+    if(curGrid) curGrid.innerHTML = cur.map(committeeCardHtml).join('');
+    if(guestGrid) guestGrid.innerHTML = guest.map(committeeCardHtml).join('');
+    if(currentLang === 'en'){ i18nWalk(document.getElementById('committee'), 'en'); }
+  }
+  renderCommitteeSection();
+  // যদি একই ব্রাউজারে অন্য ট্যাবে অ্যাডমিন প্যানেল খোলা থাকে এবং কমিটি আপডেট করা হয়, তা সাথে সাথে দেখাবে
+  window.addEventListener('storage', function(e){ if(e.key === COMMITTEE_LS_KEY) renderCommitteeSection(); });
+
+  /* ---------------- ONLINE RESULT SEARCH (admin "All Publish" থেকে প্রকাশিত ফলাফল) ---------------- */
+  (function(){
+    const f = document.getElementById('webResultForm'); if(!f) return;
+    function en(x){ return String(x||'').replace(/[০-৯]/g, function(d){ return '০১২৩৪৫৬৭৮৯'.indexOf(d); }).trim().toLowerCase(); }
+    function normRoll(x){ return en(x).replace(/^0+(?=\d)/,''); }
+    function esc(t){ return String(t==null?'':t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+    function load(){ try{ var v = JSON.parse(localStorage.getItem('sms_public_results_v1')||'[]'); return Array.isArray(v)?v:[]; }catch(e){ return []; } }
+    function refreshExams(){
+      var list = load(), sel = document.getElementById('resExam'), cur = sel.value;
+      var names = []; list.forEach(function(r){ if(names.indexOf(r.exam)<0) names.push(r.exam); });
+      if(names.length){ sel.innerHTML = names.map(function(n){ return '<option>'+esc(n)+'</option>'; }).join(''); if(names.indexOf(cur)>=0) sel.value = cur; }
+    }
+    refreshExams();
+    window.addEventListener('storage', function(e){ if(e.key==='sms_public_results_v1') refreshExams(); });
+    function ident(){
+      var I = window.schoolIdent();
+      return { name: I.name, address: I.address, phone: I.phone, eiin: I.eiin, web: I.web, title: I.title, principal: I.principal, logo: I.logo, sign: I.sign };
+    }
+    function docHtml(r){
+      var P = ident(), th = 'border:1px solid #9bb3a9;padding:4px 6px;', td = th + 'text-align:center;';
+      var contact = [P.phone ? 'Phone: '+esc(P.phone) : '', P.eiin ? 'EIIN: '+esc(P.eiin) : ''].filter(Boolean).join(' • ');
+      var logo = P.logo ? '<img src="'+P.logo+'" style="width:100%;height:100%;object-fit:cover;">' : esc((P.name||'আ').trim().charAt(0));
+      var pass = function(x){ return Math.ceil((x.full||100)*0.33); };
+      return '<div style="font-family:\'Times New Roman\',\'Hind Siliguri\',serif;color:#142820;max-width:720px;margin:0 auto;padding:6px;"><div style="border:2px solid #0a5c47;padding:5px;"><div style="border:1px solid #d4a73a;padding:12px 14px;">'
+       +'<div style="display:flex;align-items:center;gap:12px;"><div style="width:54px;height:54px;border-radius:50%;background:#0a5c47;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;overflow:hidden;flex:none;">'+logo+'</div>'
+       +'<div style="flex:1;text-align:center;"><h2 style="margin:0;color:#0a5c47;font-size:20px;">'+esc(P.name)+'</h2>'+(P.address?'<div style="font-size:11px;color:#4a5a54;">'+esc(P.address)+'</div>':'')+(contact?'<div style="font-size:11px;color:#4a5a54;">'+contact+'</div>':'')+'</div>'
+       +'<div style="background:#0a5c47;color:#fff;border-radius:6px;padding:5px 10px;font-size:11px;font-weight:700;text-align:center;max-width:120px;">'+esc(r.exam)+'<br>'+esc(r.session)+'</div></div>'
+       +'<div style="border-top:2.5px solid #d4a73a;margin:8px 0;"></div>'
+       +'<div style="background:linear-gradient(90deg,#0a5c47,#12805f);color:#fff;text-align:center;letter-spacing:3px;font-weight:700;font-size:12px;padding:6px;border-radius:3px;margin-bottom:10px;">ACADEMIC TRANSCRIPT / RESULT SHEET</div>'
+       +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;"><div><div style="font-size:17px;font-weight:700;color:#0a5c47;">'+esc(r.name)+'</div><div style="font-size:13px;">শ্রেণি: '+esc(r.cls)+' — '+esc(r.section)+' &nbsp;•&nbsp; রোল: '+esc(r.roll)+' &nbsp;•&nbsp; আইডি: '+esc(r.sid)+'</div></div>'
+       +'<div style="width:56px;height:56px;border:2px solid #0a5c47;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#0a5c47;font-weight:800;line-height:1.1;">'+esc(r.grade)+'<small style="font-size:8px;">GPA '+esc(r.gpa)+'</small></div></div>'
+       +'<table style="width:100%;border-collapse:collapse;font-size:12px;"><thead><tr style="background:#e5efe9;color:#0a5c47;"><th style="'+th+'text-align:left;">বিষয়</th><th style="'+th+'">পূর্ণমান</th><th style="'+th+'">পাস</th><th style="'+th+'">লিখিত</th><th style="'+th+'">MCQ</th><th style="'+th+'">ব্যবহারিক</th><th style="'+th+'">মোট</th><th style="'+th+'">গ্রেড</th><th style="'+th+'">GP</th><th style="'+th+'">ফল</th></tr></thead><tbody>'
+       +r.subjects.map(function(x){ return '<tr><td style="'+th+'">'+esc(x.name)+'</td><td style="'+td+'">'+esc(x.full||100)+'</td><td style="'+td+'">'+pass(x)+'</td><td style="'+td+'">'+(x.w!=null?esc(x.w):'-')+'</td><td style="'+td+'">'+(x.m!=null?esc(x.m):'-')+'</td><td style="'+td+'">'+(x.p!=null?esc(x.p):'-')+'</td><td style="'+td+'"><b>'+esc(x.total)+'</b></td><td style="'+td+'">'+esc(x.grade)+'</td><td style="'+td+'">'+(x.gp!=null?Number(x.gp).toFixed(2):'-')+'</td><td style="'+td+'">'+(x.total>=pass(x)?'পাস':'ফেল')+'</td></tr>'; }).join('')
+       +'</tbody></table>'
+       +'<div style="display:flex;justify-content:space-between;font-weight:700;color:#0a5c47;background:#e5efe9;padding:6px 10px;border-radius:6px;margin-top:8px;"><span>মোট: '+esc(r.totalMarks)+'/'+esc(r.totalFull)+'</span><span>GPA: '+esc(r.gpa)+'</span><span>গ্রেড: '+esc(r.grade)+'</span><span>'+esc(r.status)+'</span></div>'
+       +'<div style="display:flex;justify-content:flex-end;margin-top:26px;"><div style="text-align:center;font-size:12px;min-width:170px;"><div style="height:48px;display:flex;align-items:flex-end;justify-content:center;">'+(P.sign?'<img src="'+P.sign+'" style="max-height:46px;max-width:140px;">':'')+'</div><div style="border-top:1px solid #333;padding-top:3px;font-weight:600;">'+esc(P.title)+'</div>'+(P.principal?'<div style="font-size:11px;color:#444;">'+esc(P.principal)+'</div>':'')+'</div></div>'
+       +'<div style="border-top:1px solid #cfdad5;margin-top:10px;padding-top:4px;font-size:9px;color:#667;display:flex;justify-content:space-between;"><span>কম্পিউটার জেনারেটেড ফলাফল</span><span>'+esc(P.web)+'</span></div>'
+       +'</div></div></div>';
+    }
+    f.addEventListener('submit', function(){
+      var cls = document.getElementById('resCls').value, exam = document.getElementById('resExam').value, q = document.getElementById('resRoll').value, ses = document.getElementById('resSession').value;
+      var out = document.getElementById('webResultOut');
+      if(!en(q)){ out.innerHTML = '<p style="color:var(--red);">রোল নম্বর বা স্টুডেন্ট আইডি দিন।</p>'; return; }
+      var r = load().find(function(x){ return x.cls===cls && x.exam===exam && en(x.session)===en(ses) && (normRoll(x.roll)===normRoll(q) || en(x.sid)===en(q)); });
+      if(!r){ out.innerHTML = '<p style="color:var(--red);">কোনো প্রকাশিত ফলাফল পাওয়া যায়নি। তথ্য মিলিয়ে দেখুন অথবা ফলাফল এখনো প্রকাশ হয়নি।</p>'; return; }
+      out.innerHTML = '<div style="border:1px solid var(--line);border-radius:10px;overflow:auto;background:#fff;">'+docHtml(r)+'</div><button type="button" class="btn-solid" id="resPrintBtn" style="margin-top:10px;">🖨 প্রিন্ট / PDF</button>';
+      document.getElementById('resPrintBtn').onclick = function(){
+        var w = window.open('', '_blank'); if(!w) return;
+        w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>Result-'+esc(r.sid)+'</title><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet"><style>@page{size:A4;margin:10mm}body{margin:0}</style></head><body>'+docHtml(r)+'<script>window.addEventListener("load",function(){setTimeout(function(){window.print()},500)})<\/script></body></html>');
+        w.document.close();
+      };
+    });
+  })();
+
+  /* ---------------- ONLINE ADMISSION APPLICATION FORM ---------------- */
+  const admissionForm = document.getElementById('admissionApplyForm');
+  /* ---------------- ভর্তি আবেদন: প্রিন্ট / পুনরায় ডাউনলোড / আগের আবেদন খোঁজা ---------------- */
+  const APPS_LS_KEY = 'sms_public_applications_v1';
+  function loadApps(){ try{ const v = JSON.parse(localStorage.getItem(APPS_LS_KEY) || '[]'); return Array.isArray(v) ? v : []; }catch(e){ return []; } }
+  function saveApplication(rec){
+    const list = loadApps(); list.push(rec);
+    try{ localStorage.setItem(APPS_LS_KEY, JSON.stringify(list)); }
+    catch(e){ list.forEach(function(x){ x.photo=''; }); try{ localStorage.setItem(APPS_LS_KEY, JSON.stringify(list)); }catch(e2){} }
+  }
+  function nextAppNo(){
+    const y = new Date().getFullYear();
+    let n = 0;
+    loadApps().forEach(function(x){ const m = /^AR(\d{4})(\d{4})$/.exec(x.appNo||''); if(m && +m[1]===y) n = Math.max(n, +m[2]); });
+    try{ JSON.parse(localStorage.getItem('sms_public_admissions_v1')||'[]').forEach(function(x){ const m = /^AR(\d{4})(\d{4})$/.exec(x.appNo||''); if(m && +m[1]===y) n = Math.max(n, +m[2]); }); }catch(e){}
+    return 'AR' + y + String(n+1).padStart(4,'0');
+  }
+  function esc(t){ return String(t==null?'':t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function admFormDocHtml(a){
+    const I = window.schoolIdent(); const school = esc(I.name || 'বিদ্যালয়');
+    const logoH = I.logo ? '<img src="'+I.logo+'" style="width:54px;height:54px;border-radius:50%;object-fit:cover;">' : '';
+    const photo = a.photo ? '<img src="'+a.photo+'" style="width:100px;height:120px;object-fit:cover;border:1px solid #999;">'
+      : '<div style="width:100px;height:120px;border:1px dashed #999;display:flex;align-items:center;justify-content:center;font-size:12px;color:#888;">ছবি</div>';
+    function row(l,v){ return '<tr><td style="padding:7px 6px;width:190px;font-weight:600;">'+l+'</td><td style="padding:7px 6px;border-bottom:1px dotted #999;">'+esc(v)+'</td></tr>'; }
+    return '<div id="admDoc" style="max-width:720px;margin:0 auto;background:#fff;padding:24px;font-family:\'Hind Siliguri\',\'Segoe UI\',sans-serif;color:#142820;">'
+     +'<div style="text-align:center;border-bottom:3px double #0a5c47;padding-bottom:12px;margin-bottom:18px;"><h2 style="margin:0;color:#0a5c47;">'+school+'</h2>'+(I.address?'<div style="font-size:12px;color:#555;">'+esc(I.address)+'</div>':'')
+     +'<div style="display:inline-block;margin-top:8px;border:1.5px solid #0a5c47;border-radius:20px;padding:4px 22px;font-weight:700;color:#0a5c47;">ভর্তি আবেদন ফরম</div></div>'
+     +'<div style="display:flex;gap:18px;"><table style="flex:1;border-collapse:collapse;font-size:15px;">'
+     +row('আবেদন নং',a.appNo)+row('Student Name',a.name)+row("Father's Name",a.father)+row("Mother's Name",a.mother)+row('Date of Birth',a.dob)+row('জন্ম নিবন্ধন নম্বর',a.birthRegNo)+row('Gender',a.gender)
+     +'</table><div style="width:100px;">'+photo+'</div></div>'
+     +'<table style="width:100%;border-collapse:collapse;font-size:15px;margin-top:4px;">'
+     +row('Class Applying For',a.cls)+row('Blood Group',a.bloodGroup)+row('Religion',a.religion)+row('Previous School',a.prevSchool)+row("Student's Phone",a.studentPhone)+row("Guardian's Phone",a.guardianPhone)+row("Guardian's Email",a.guardianEmail)+row('Present Address',a.address)+row('আবেদনের তারিখ',a.date)
+     +'</table><div style="margin-top:70px;display:flex;justify-content:space-between;font-size:14px;text-align:center;"><div style="border-top:1px dotted #333;padding-top:6px;min-width:180px;">অভিভাবকের স্বাক্ষর</div><div style="min-width:180px;">'+(I.sign?'<img src="'+I.sign+'" style="max-height:44px;display:block;margin:0 auto 2px;">':'')+'<div style="border-top:1px dotted #333;padding-top:6px;">'+esc(I.title)+(I.principal?' — '+esc(I.principal):'')+'</div></div></div></div>';
+  }
+  function openAdmPrint(a, autoPrint){
+    const w = window.open('', '_blank');
+    if(!w){ alert('পপ-আপ ব্লক করা আছে — অনুগ্রহ করে পপ-আপ অনুমতি দিন।'); return; }
+    const fname = 'Admission-' + (a.appNo||'form') + '.pdf';
+    w.document.write('<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(fname)+'</title>'
+      +'<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">'
+      +'<style>@page{size:A4;margin:10mm}body{margin:0;background:#e9ece9;font-family:\'Hind Siliguri\',sans-serif}.tb{position:sticky;top:0;z-index:5;background:#0a5c47;padding:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.tb button{border:0;border-radius:8px;padding:9px 18px;font:600 14px inherit;font-family:inherit;cursor:pointer}.p{background:#fff;color:#0a5c47}.d{background:#d4a73a;color:#142820}.c{background:transparent;color:#fff;border:1px solid #fff!important}@media print{.tb{display:none}body{background:#fff}}</style></head><body>'
+      +'<div class="tb"><button class="p" onclick="window.print()">🖨 প্রিন্ট করুন</button><button class="d" id="dl">⬇ PDF ডাউনলোড</button><button class="c" onclick="window.close()">✕ বন্ধ করুন</button></div>'
+      +admFormDocHtml(a)
+      +'<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"><\/script>'
+      +'<script>document.getElementById("dl").onclick=function(){var el=document.getElementById("admDoc");if(!window.html2pdf){window.print();return;}html2pdf().set({margin:8,filename:'+JSON.stringify(fname)+',image:{type:"jpeg",quality:0.95},html2canvas:{scale:2,useCORS:true},jsPDF:{unit:"mm",format:"a4",orientation:"portrait"}}).from(el).save();};'
+      +(autoPrint?'window.addEventListener("load",function(){setTimeout(function(){window.print()},600)});':'')+'<\/script></body></html>');
+    w.document.close();
+  }
+  function showAdmSuccess(rec){
+    let box = document.getElementById('admSuccessBox');
+    if(!box){
+      box = document.createElement('div'); box.id = 'admSuccessBox';
+      box.style.cssText = 'max-width:640px;margin:0 auto 20px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:28px 24px;text-align:center;';
+      admissionForm.parentNode.insertBefore(box, admissionForm);
+    }
+    box.innerHTML = '<div style="font-size:2.4rem;">✅</div><h3 style="margin:6px 0;color:var(--green-deep);">আবেদন সফলভাবে জমা হয়েছে</h3>'
+      +'<p style="margin:4px 0;color:var(--ink-soft);">আপনার আবেদন নম্বর</p>'
+      +'<div style="display:inline-block;margin:6px 0 10px;padding:8px 22px;border:2px dashed var(--gold);border-radius:10px;font-size:1.5rem;font-weight:700;letter-spacing:1px;color:var(--green-deep);">'+esc(rec.appNo)+'</div>'
+      +'<p style="font-size:.85rem;color:var(--ink-soft);margin:0 0 14px;">নম্বরটি সংরক্ষণ করুন — পরে আবার ফরম ডাউনলোড করতে লাগবে। বিদ্যালয় থেকে যোগাযোগ করা হবে।</p>'
+      +'<div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;"><button type="button" id="admSucPrint" class="btn-solid" style="padding:10px 20px;border-radius:8px;cursor:pointer;">🖨 প্রিন্ট / PDF ডাউনলোড</button>'
+      +'<button type="button" id="admSucNew" style="padding:10px 20px;border-radius:8px;border:1px solid var(--line);background:none;cursor:pointer;font-family:inherit;">নতুন আবেদন</button></div>';
+    admissionForm.style.display = 'none';
+    box.style.display = 'block';
+    document.getElementById('admSucPrint').onclick = function(){ openAdmPrint(rec); };
+    document.getElementById('admSucNew').onclick = function(){ box.style.display='none'; admissionForm.style.display=''; };
+    box.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  function buildLookup(){
+    if(document.getElementById('admLookupBox')) return;
+    const box = document.createElement('div'); box.id = 'admLookupBox';
+    box.style.cssText = 'max-width:640px;margin:22px auto 0;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 24px;';
+    box.innerHTML = '<h3 style="margin:0 0 4px;color:var(--green-deep);">🔎 আগে আবেদন করেছেন?</h3>'
+      +'<p style="margin:0 0 12px;font-size:.85rem;color:var(--ink-soft);">আবেদন নম্বর ও অভিভাবকের মোবাইল নম্বর দিয়ে ফরম আবার প্রিন্ট বা ডাউনলোড করুন।</p>'
+      +'<div style="display:flex;gap:8px;flex-wrap:wrap;"><input id="lkAppNo" placeholder="আবেদন নং (যেমন AR20260001)" style="flex:1;min-width:180px;padding:10px;border:1px solid var(--line);border-radius:8px;font-family:inherit;">'
+      +'<input id="lkPhone" placeholder="অভিভাবকের মোবাইল" style="flex:1;min-width:150px;padding:10px;border:1px solid var(--line);border-radius:8px;font-family:inherit;">'
+      +'<button type="button" id="lkBtn" class="btn-solid" style="padding:10px 18px;border-radius:8px;cursor:pointer;">খুঁজুন</button></div>'
+      +'<div id="lkMsg" style="margin-top:10px;font-size:.88rem;"></div>';
+    admissionForm.parentNode.insertBefore(box, admissionForm.nextSibling);
+    document.getElementById('lkBtn').onclick = function(){
+      const no = document.getElementById('lkAppNo').value.trim().toUpperCase();
+      const ph = document.getElementById('lkPhone').value.replace(/\D/g,'');
+      const msg = document.getElementById('lkMsg');
+      const rec = loadApps().find(function(x){ return (x.appNo||'').toUpperCase()===no && String(x.guardianPhone||'').replace(/\D/g,'')===ph; });
+      if(!no || !ph){ msg.style.color='var(--red)'; msg.textContent='আবেদন নম্বর ও মোবাইল নম্বর দুটিই দিন।'; return; }
+      if(!rec){ msg.style.color='var(--red)'; msg.textContent='কোনো আবেদন পাওয়া যায়নি। (এই ব্রাউজারে জমা দেওয়া আবেদনই এখানে খোঁজা যায়।)'; return; }
+      msg.style.color='var(--green-deep)'; msg.innerHTML='✔ পাওয়া গেছে: <b>'+esc(rec.name)+'</b> — <a href="#" id="lkOpen">ফরম খুলুন</a>';
+      document.getElementById('lkOpen').onclick = function(ev){ ev.preventDefault(); openAdmPrint(rec); };
+    };
+  }
+
+  const WEB_ADMISSION_LS_KEY = 'sms_public_admissions_v1';
+  if(admissionForm) buildLookup();
+  if(admissionForm){
+    function readAdmPhoto(cb){
+      const inputEl = document.getElementById('pubAdmPhoto');
+      const file = inputEl && inputEl.files && inputEl.files[0];
+      if(!file){ cb(''); return; }
+      const reader = new FileReader();
+      reader.onload = function(e){
+        const img = new Image();
+        img.onload = function(){
+          try{
+            const max = 400, r = Math.min(1, max/Math.max(img.width, img.height));
+            const c = document.createElement('canvas');
+            c.width = Math.round(img.width*r); c.height = Math.round(img.height*r);
+            c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+            cb(c.toDataURL('image/jpeg',0.8));
+          }catch(err){ cb(e.target.result); }
+        };
+        img.onerror = function(){ cb(e.target.result); };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+    admissionForm.addEventListener('submit', function(){
+      const name = document.getElementById('pubAdmName').value.trim();
+      const father = document.getElementById('pubAdmFather').value.trim();
+      const mother = document.getElementById('pubAdmMother').value.trim();
+      const dob = document.getElementById('pubAdmDob').value;
+      const birthRegNo = document.getElementById('pubAdmBirthRegNo').value.trim();
+      const gender = document.getElementById('pubAdmGender').value;
+      const cls = document.getElementById('pubAdmClass').value;
+      const bloodGroup = document.getElementById('pubAdmBloodGroup').value;
+      const religion = document.getElementById('pubAdmReligion').value.trim();
+      const prevSchool = document.getElementById('pubAdmPrevSchool').value.trim();
+      const studentPhone = document.getElementById('pubAdmStudentPhone').value.trim();
+      const guardianPhone = document.getElementById('pubAdmGuardianPhone').value.trim();
+      const guardianEmail = document.getElementById('pubAdmGuardianEmail').value.trim();
+      const address = document.getElementById('pubAdmAddress').value.trim();
+      if(!name || !father || !mother || !dob || !birthRegNo || !gender || !cls || !guardianPhone || !address){
+        alert('চিহ্নিত (*) ঘরগুলো অবশ্যই পূরণ করতে হবে।');
+        return;
+      }
+      readAdmPhoto(function(photo){
+        let queue = [];
+        try{ queue = JSON.parse(localStorage.getItem(WEB_ADMISSION_LS_KEY) || '[]'); }catch(e){ queue = []; }
+        const appNo = nextAppNo();
+        const rec = {
+          appNo: appNo, webId: appNo, name, father, mother, dob, birthRegNo, gender, cls, bloodGroup,
+          religion, prevSchool, studentPhone, guardianPhone, guardianEmail, address, photo,
+          date: new Date().toISOString().slice(0,10)
+        };
+        queue.push(rec);
+        try{ localStorage.setItem(WEB_ADMISSION_LS_KEY, JSON.stringify(queue)); }catch(e){ /* ignore */ }
+        saveApplication(rec);
+        admissionForm.reset();
+        showAdmSuccess(rec);
+      });
+    });
+  }
+
+  /* ---------------- ভর্তি ফরম: লিংকে চাপ দিলে দেখাবে, আগে থেকে দেখাবে না ---------------- */
+  (function(){
+    const sec = document.getElementById('admission');
+    if(!sec) return;
+    function openAdm(){ sec.style.display = 'block'; setTimeout(function(){ sec.scrollIntoView({behavior:'smooth', block:'start'}); }, 30); }
+    function closeAdm(){ sec.style.display = 'none'; window.scrollTo({top:0, behavior:'smooth'}); }
+    document.querySelectorAll('a[href="#admission"]').forEach(function(a){
+      a.addEventListener('click', function(e){ e.preventDefault(); openAdm(); });
+    });
+    const cb = document.getElementById('admCloseBtn');
+    if(cb) cb.addEventListener('click', closeAdm);
+    if(location.hash === '#admission') openAdm();
+  })();
+  /* ---------------- হোমপেজের কুইক কার্ড ড্রপডাউন ---------------- */
+  (function(){
+    const items = Array.prototype.slice.call(document.querySelectorAll('.qa-item'));
+    if(!items.length) return;
+    function closeAll(except){ items.forEach(function(it){ if(it !== except){ it.classList.remove('open'); it.firstElementChild.setAttribute('aria-expanded', 'false'); } }); }
+    items.forEach(function(it){
+      const btn = it.firstElementChild;
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        const willOpen = !it.classList.contains('open');
+        closeAll(it);
+        it.classList.toggle('open', willOpen);
+        btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      });
+      it.querySelectorAll('.qa-menu a').forEach(function(a){
+        a.addEventListener('click', function(e){
+          closeAll(null);
+          if(a.getAttribute('data-act') === 'offline-form'){ e.preventDefault(); openOfflineForm(); }
+        });
+      });
+    });
+    document.addEventListener('click', function(e){ if(!e.target.closest || !e.target.closest('.qa-item')) closeAll(null); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeAll(null); });
+
+    /* অফলাইন ভর্তি ফরম: ফাঁকা ফরম নতুন উইন্ডোতে প্রিন্ট/PDF-এর জন্য */
+    function openOfflineForm(){
+      let name = 'আদর্শ সরকারি উচ্চ বিদ্যালয়';
+      try{ const st = JSON.parse(localStorage.getItem('sms_site_settings_v1') || '{}'); if(st && st.siName) name = st.siName; }catch(e){}
+      const rows = ['Student Name','Father\'s Name','Mother\'s Name','Date of Birth','Birth Registration Number','Gender','Class Applying For','Blood Group','Religion','Previous School (if any)','Student\'s Phone (if any)','Guardian\'s Phone','Guardian\'s Email','Present Address'];
+      const esc = function(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+      const w = window.open('', '_blank');
+      if(!w){ alert('পপ-আপ ব্লক করা আছে — ব্রাউজারে পপ-আপ অনুমতি দিন।'); return; }
+      w.document.write('<!DOCTYPE html><html><head><meta charset="utf-8"><title>অফলাইন ভর্তি ফরম</title><style>' +
+        '*{box-sizing:border-box}body{margin:0;padding:18px;font-family:"Segoe UI","Hind Siliguri","Noto Sans Bengali",Arial,sans-serif;color:#142820}' +
+        '.bar{max-width:720px;margin:0 auto 12px;text-align:right}.bar button{padding:8px 16px;border:0;border-radius:8px;background:#0a5c47;color:#fff;font-size:14px;cursor:pointer;margin-left:6px}' +
+        '.pg{max-width:720px;margin:0 auto;border:2px solid #0a5c47;padding:24px 28px}.hd{text-align:center;border-bottom:3px double #0a5c47;padding-bottom:10px;margin-bottom:16px}' +
+        '.hd h1{margin:0;font-size:22px;color:#0a5c47}.pill{display:inline-block;margin-top:8px;border:1.5px solid #0a5c47;border-radius:20px;padding:4px 22px;font-weight:700;color:#0a5c47}' +
+        '.top{display:flex;gap:18px}.top table{flex:1}.ph{width:100px;height:120px;border:1px dashed #666;display:flex;align-items:center;justify-content:center;font-size:12px;color:#666;text-align:center}' +
+        'table{width:100%;border-collapse:collapse;font-size:14px}td{padding:9px 6px}td.k{width:210px;font-weight:600}td.v{border-bottom:1px dotted #555}' +
+        '.sg{display:flex;justify-content:space-between;margin-top:70px;text-align:center;font-size:13px}.sg div{border-top:1px dotted #333;padding-top:6px;min-width:190px}' +
+        '@page{size:A4;margin:10mm}@media print{.bar{display:none}body{padding:0}}</style></head><body>' +
+        '<div class="bar"><button onclick="window.print()">🖨️ Print / Save as PDF</button><button onclick="window.close()">✖ Close</button></div>' +
+        '<div class="pg"><div class="hd"><h1>' + esc(name) + '</h1><span class="pill">ভর্তি আবেদন ফরম</span></div>' +
+        '<div class="top"><table>' + rows.slice(0,6).map(function(r){ return '<tr><td class="k">' + esc(r) + '</td><td class="v"></td></tr>'; }).join('') + '</table><div class="ph">ছাত্র/ছাত্রীর<br>ছবি</div></div>' +
+        '<table>' + rows.slice(6).map(function(r){ return '<tr><td class="k">' + esc(r) + '</td><td class="v"></td></tr>'; }).join('') + '<tr><td class="k">আবেদনের তারিখ</td><td class="v"></td></tr></table>' +
+        '<div class="sg"><div>অভিভাবকের স্বাক্ষর</div><div>অফিস ব্যবহারের জন্য</div></div></div></body></html>');
+      w.document.close();
+    }
+  })();
+</script>
+
+<!-- PARENT LOGIN MODAL -->
+<div class="modal-overlay" id="parentLoginModal">
+  <div class="modal-box">
+    <button class="close-x" id="closeParentModal">✕</button>
+    <div class="modal-badge"></div>
+    <h3>অভিভাবক লগইন</h3>
+    <p class="sub">সন্তানের তথ্য, ফলাফল ও ফি দেখতে লগইন করুন</p>
+    <p class="modal-error" id="parentLoginError">তথ্য সঠিক নয়, আবার চেষ্টা করুন।</p>
+    <form id="parentLoginForm" onsubmit="return false;">
+      <div class="field"><label>শিক্ষার্থীর স্কুল আইডি</label><input type="text" id="parentSid" placeholder="যেমনঃ STU-1001"></div>
+      <div class="field"><label>পাসওয়ার্ড (অভিভাবকের রেজিস্টার্ড ফোন নম্বর)</label><input type="password" id="parentPass" placeholder="যেমনঃ 01711000001"></div>
+      <button class="btn-login" id="parentLoginBtn" style="width:100%;background:var(--green-deep);color:#fff;border:0;padding:12px;border-radius:10px;font-weight:700;font-size:.95rem;">লগইন করুন</button>
+    </form>
+    <div class="modal-hint">ডেমো লগইন — শিক্ষার্থী আইডি: <b>STU-1001</b> · পাসওয়ার্ড (অভিভাবকের ফোন): <b>01711000001</b></div>
+  </div>
+</div>
+
+<!-- PARENT PORTAL -->
+<div id="parentPortal">
+  <div class="portal-top">
+    <div><h2>অভিভাবক পোর্টাল</h2><p class="pt-sub">আদর্শ সরকারি উচ্চ বিদ্যালয়</p></div>
+    <button id="parentLogoutBtn">🚪 লগআউট</button>
+  </div>
+  <div class="portal-wrap">
+    <div class="child-card">
+      <div class="avatar"></div>
+      <div>
+        <h3>রাকিব হাসান</h3>
+        <p>আইডিঃ STU-1001 · শ্রেণিঃ নবম - ক · রোলঃ ০৫ · সেশনঃ ২০২৬</p>
+      </div>
+    </div>
+
+    <div class="portal-stats">
+      <div class="pcard"><div class="num">৯৪%</div><div class="lbl">উপস্থিতির হার</div></div>
+      <div class="pcard"><div class="num">GPA ৪.৭৫</div><div class="lbl">সর্বশেষ ফলাফল</div></div>
+      <div class="pcard"><div class="num">৳ ৩,০০০</div><div class="lbl">মোট ফি</div></div>
+      <div class="pcard" style="border-left:3px solid var(--red);"><div class="num" style="color:var(--red);">৳ ৫০০</div><div class="lbl">বকেয়া ফি</div></div>
+    </div>
+
+    <div class="portal-split">
+      <div class="list-card">
+        <div class="head"><h3>📊 সাম্প্রতিক ফলাফল</h3></div>
+        <div class="list-row"><div><h4>অর্ধবার্ষিক পরীক্ষা — ২০২৬</h4><p>মোট নম্বরঃ ৫৭০/৬০০ · গ্রেডঃ A+</p></div></div>
+        <div class="list-row"><div><h4>নির্বাচনী পরীক্ষা — ২০২৫</h4><p>মোট নম্বরঃ ৫৪০/৬০০ · গ্রেডঃ A</p></div></div>
+      </div>
+      <div class="list-card">
+        <div class="head"><h3>📋 বিদ্যালয়ের নোটিশ</h3></div>
+        <div class="list-row"><div><h4>অর্ধবার্ষিক পরীক্ষার রুটিন প্রকাশ</h4><p>১২ সেপ্টেম্বর, ২০২৬</p></div></div>
+        <div class="list-row"><div><h4>অভিভাবক সমাবেশ অনুষ্ঠিত হবে</h4><p>০২ সেপ্টেম্বর, ২০২৬</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Parent login — student's School ID as username, guardian's registered phone number as password
+  const PARENT_SID = 'STU-1001';
+  const PARENT_PASS = '01711000001'; // guardian's phone number on record for this student
+  const parentModal = document.getElementById('parentLoginModal');
+  function openParentModal(){ parentModal.classList.add('open'); }
+  document.getElementById('topbarParentLogin').addEventListener('click', (e) => { e.preventDefault(); openParentModal(); });
+  document.getElementById('navParentLogin').addEventListener('click', (e) => { e.preventDefault(); openParentModal(); });
+  document.getElementById('closeParentModal').addEventListener('click', () => parentModal.classList.remove('open'));
+
+  document.getElementById('parentLoginBtn').addEventListener('click', () => {
+    const sid = document.getElementById('parentSid').value.trim();
+    const pass = document.getElementById('parentPass').value.trim();
+    const err = document.getElementById('parentLoginError');
+    if (sid === PARENT_SID && pass === PARENT_PASS) {
+      err.style.display = 'none';
+      parentModal.classList.remove('open');
+      document.getElementById('parentPortal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    } else {
+      err.style.display = 'block';
+    }
+  });
+  document.getElementById('parentLogoutBtn').addEventListener('click', () => {
+    document.getElementById('parentPortal').style.display = 'none';
+    document.body.style.overflow = '';
+    document.getElementById('parentSid').value = '';
+    document.getElementById('parentPass').value = '';
+  });
+</script>
+
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('reveal-on');
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.06});
+  document.querySelectorAll('section .wrap, .quick-access .wrap').forEach(function(el){ el.classList.add('rv'); io.observe(el); });
+})();
+</script>
+</body>
+</html>

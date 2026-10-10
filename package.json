@@ -1,0 +1,19 @@
+{
+  "name": "school-management-system",
+  "version": "2.0.0",
+  "description": "School Management System — Cloudflare Workers + D1 + Google Drive backup",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:create": "wrangler d1 create school-db",
+    "db:migrate": "wrangler d1 execute school-db --file=./sql/schema.sql",
+    "db:migrate:local": "wrangler d1 execute school-db --local --file=./sql/schema.sql",
+    "db:console": "wrangler d1 execute school-db --command",
+    "secret:list": "wrangler secret list",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^3.78.0"
+  }
+}
